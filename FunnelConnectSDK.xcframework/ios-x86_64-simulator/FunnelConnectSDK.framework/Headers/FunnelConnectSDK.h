@@ -8,7 +8,7 @@
 
 @class FCSDKIdcData, FCSDKCdpPermissions, NSURL, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException;
 
-@protocol FCSDKCdpServices, FCSDKTrustPidServices, FCSDKIFunnelConnect, FCSDKRoute, FCSDKKotlinIterator;
+@protocol FCSDKCdpServices, FCSDKTrustPidServices, FCSDKFunnelConnect, FCSDKRoute, FCSDKKotlinIterator;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -149,8 +149,8 @@ __attribute__((swift_name("TrustPidServices")))
 @required
 - (BOOL)isConsentAccepted __attribute__((swift_name("isConsentAccepted()")));
 - (void)rejectConsent __attribute__((swift_name("rejectConsent()")));
-- (void)requestIdcDataResultClosure:(void (^)(FCSDKIdcData *))resultClosure __attribute__((swift_name("requestIdcData(resultClosure:)")));
-- (void)startTrustPidAcceptedConsent:(BOOL)acceptedConsent isStub:(BOOL)isStub __attribute__((swift_name("startTrustPid(acceptedConsent:isStub:)")));
+- (void)requestDataResultClosure:(void (^)(FCSDKIdcData *))resultClosure __attribute__((swift_name("requestData(resultClosure:)")));
+- (void)startServiceAcceptedConsent:(BOOL)acceptedConsent isStub:(BOOL)isStub __attribute__((swift_name("startService(acceptedConsent:isStub:)")));
 @end;
 
 __attribute__((swift_name("CdpServices")))
@@ -160,15 +160,16 @@ __attribute__((swift_name("CdpServices")))
 - (NSString * _Nullable)getUmid __attribute__((swift_name("getUmid()")));
 - (NSString * _Nullable)getUserId __attribute__((swift_name("getUserId()")));
 - (void)logEventKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("logEvent(key:value:)")));
-- (void)requestDataResultClosure:(void (^)(NSString *))resultClosure __attribute__((swift_name("requestData(resultClosure:)")));
+- (void)requestDataResultClosure_:(void (^)(NSString *))resultClosure __attribute__((swift_name("requestData(resultClosure_:)")));
+- (void)reset __attribute__((swift_name("reset()")));
 - (void)setUserIdId:(NSString *)id __attribute__((swift_name("setUserId(id:)")));
-- (void)startCdpOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("startCdp(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
-- (void)startCdpUserIdentifier:(NSString *)userIdentifier omPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("startCdp(userIdentifier:omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
+- (void)startServiceOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("startService(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
+- (void)startServiceUserIdentifier:(NSString *)userIdentifier omPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("startService(userIdentifier:omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
 - (void)updatePermissionsOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("updatePermissions(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
 @end;
 
-__attribute__((swift_name("IFunnelConnect")))
-@protocol FCSDKIFunnelConnect
+__attribute__((swift_name("FunnelConnect")))
+@protocol FCSDKFunnelConnect
 @required
 
 /**
@@ -188,7 +189,18 @@ __attribute__((swift_name("IFunnelConnect")))
  Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
-- (void)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
 
 /**
  @note This method converts instances of Exception to errors.
@@ -199,7 +211,7 @@ __attribute__((swift_name("IFunnelConnect")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FunnelConnectSDK")))
-@interface FCSDKFunnelConnectSDK : FCSDKBase <FCSDKIFunnelConnect>
+@interface FCSDKFunnelConnectSDK : FCSDKBase <FCSDKFunnelConnect>
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)funnelConnectSDK __attribute__((swift_name("init()")));
@@ -222,7 +234,18 @@ __attribute__((swift_name("FunnelConnectSDK")))
  Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
-- (void)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
 
 /**
  @note This method converts instances of Exception to errors.
