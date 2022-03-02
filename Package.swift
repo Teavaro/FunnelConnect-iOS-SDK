@@ -15,7 +15,8 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "FunnelConnectSDK",
-            path: "./FunnelConnectSDK.xcframework"
+            url: "https://github.com/Teavaro/FunnelConnectSDK_iOS/FunnelConnectSDK.zip",
+            checksum: "66c55eeadd07e0aeb316110a02f7e69f88b2b52f964ed148df63e05f51f656d8"
         ),
     ]
 )
