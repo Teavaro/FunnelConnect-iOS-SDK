@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FCSDKIdcData, FCSDKCdpPermissions, NSURL, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException;
+@class FCSDKIdcData, FCSDKCdpPermissions, NSURL, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException, FCSDKKotlinByteIterator;
 
 @protocol FCSDKCdpServices, FCSDKTrustPidServices, FCSDKFunnelConnect, FCSDKRoute, FCSDKKotlinIterator;
 
@@ -261,6 +261,13 @@ __attribute__((swift_name("IStringUtils")))
 - (NSDictionary<NSString *, NSString *> *)mapFromStringString:(NSString *)string delimiter:(NSString *)delimiter keyValueDelimiter:(NSString *)keyValueDelimiter __attribute__((swift_name("mapFromString(string:delimiter:keyValueDelimiter:)")));
 @end;
 
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Sha256")))
+@interface FCSDKSha256 : FCSDKBase
+- (instancetype)initWithPlanString:(NSString *)planString __attribute__((swift_name("init(planString:)"))) __attribute__((objc_designated_initializer));
+- (FCSDKKotlinByteArray *)digest __attribute__((swift_name("digest()")));
+@end;
+
 __attribute__((swift_name("TeavaroLogger")))
 @protocol FCSDKTeavaroLogger
 @required
@@ -420,6 +427,23 @@ __attribute__((swift_name("CdpPermissions")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinByteArray")))
+@interface FCSDKKotlinByteArray : FCSDKBase
++ (instancetype)arrayWithSize:(int32_t)size __attribute__((swift_name("init(size:)")));
++ (instancetype)arrayWithSize:(int32_t)size init:(FCSDKByte *(^)(FCSDKInt *))init __attribute__((swift_name("init(size:init:)")));
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (int8_t)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
+- (FCSDKKotlinByteIterator *)iterator __attribute__((swift_name("iterator()")));
+- (void)setIndex:(int32_t)index value:(int8_t)value __attribute__((swift_name("set(index:value:)")));
+@property (readonly) int32_t size __attribute__((swift_name("size")));
+@end;
+
+@interface FCSDKKotlinByteArray (Extensions)
+- (NSString *)toHexString __attribute__((swift_name("toHexString()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinArray")))
 @interface FCSDKKotlinArray<T> : FCSDKBase
 + (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(FCSDKInt *))init __attribute__((swift_name("init(size:init:)")));
@@ -436,6 +460,14 @@ __attribute__((swift_name("KotlinIterator")))
 @required
 - (BOOL)hasNext __attribute__((swift_name("hasNext()")));
 - (id _Nullable)next __attribute__((swift_name("next()")));
+@end;
+
+__attribute__((swift_name("KotlinByteIterator")))
+@interface FCSDKKotlinByteIterator : FCSDKBase <FCSDKKotlinIterator>
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (FCSDKByte *)next __attribute__((swift_name("next()")));
+- (int8_t)nextByte __attribute__((swift_name("nextByte()")));
 @end;
 
 #pragma pop_macro("_Nullable_result")
