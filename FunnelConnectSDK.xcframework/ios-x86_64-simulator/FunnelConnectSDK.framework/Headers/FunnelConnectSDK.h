@@ -147,10 +147,10 @@ __attribute__((swift_name("KotlinBoolean")))
 __attribute__((swift_name("TrustPidServices")))
 @protocol FCSDKTrustPidServices
 @required
+- (void)acceptConsent __attribute__((swift_name("acceptConsent()")));
 - (BOOL)isConsentAccepted __attribute__((swift_name("isConsentAccepted()")));
 - (void)rejectConsent __attribute__((swift_name("rejectConsent()")));
-- (void)requestDataResultClosure:(void (^)(FCSDKIdcData *))resultClosure __attribute__((swift_name("requestData(resultClosure:)")));
-- (void)startServiceAcceptedConsent:(BOOL)acceptedConsent isStub:(BOOL)isStub __attribute__((swift_name("startService(acceptedConsent:isStub:)")));
+- (void)startServiceIsStub:(BOOL)isStub dataClosure:(void (^ _Nullable)(FCSDKIdcData *))dataClosure __attribute__((swift_name("startService(isStub:dataClosure:)")));
 @end;
 
 __attribute__((swift_name("CdpServices")))
@@ -160,11 +160,8 @@ __attribute__((swift_name("CdpServices")))
 - (NSString * _Nullable)getUmid __attribute__((swift_name("getUmid()")));
 - (NSString * _Nullable)getUserId __attribute__((swift_name("getUserId()")));
 - (void)logEventKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("logEvent(key:value:)")));
-- (void)requestDataResultClosure_:(void (^)(NSString *))resultClosure __attribute__((swift_name("requestData(resultClosure_:)")));
-- (void)reset __attribute__((swift_name("reset()")));
-- (void)setUserIdId:(NSString *)id __attribute__((swift_name("setUserId(id:)")));
-- (void)startServiceOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("startService(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
-- (void)startServiceUserIdentifier:(NSString *)userIdentifier omPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("startService(userIdentifier:omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
+- (void)setUserIdUserId:(NSString *)userId __attribute__((swift_name("setUserId(userId:)")));
+- (void)startServiceUserId:(NSString * _Nullable)userId dataClosure:(void (^ _Nullable)(NSString *))dataClosure __attribute__((swift_name("startService(userId:dataClosure:)")));
 - (void)updatePermissionsOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("updatePermissions(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
 @end;
 
@@ -397,17 +394,15 @@ __attribute__((swift_name("FCOptions")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("IdcData")))
 @interface FCSDKIdcData : FCSDKBase
-- (instancetype)initWithUmid:(NSString * _Nullable)umid mtid:(NSString * _Nullable)mtid atid:(NSString * _Nullable)atid __attribute__((swift_name("init(umid:mtid:atid:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMtid:(NSString * _Nullable)mtid atid:(NSString * _Nullable)atid __attribute__((swift_name("init(mtid:atid:)"))) __attribute__((objc_designated_initializer));
 - (NSString * _Nullable)component1 __attribute__((swift_name("component1()")));
 - (NSString * _Nullable)component2 __attribute__((swift_name("component2()")));
-- (NSString * _Nullable)component3 __attribute__((swift_name("component3()")));
-- (FCSDKIdcData *)doCopyUmid:(NSString * _Nullable)umid mtid:(NSString * _Nullable)mtid atid:(NSString * _Nullable)atid __attribute__((swift_name("doCopy(umid:mtid:atid:)")));
+- (FCSDKIdcData *)doCopyMtid:(NSString * _Nullable)mtid atid:(NSString * _Nullable)atid __attribute__((swift_name("doCopy(mtid:atid:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString * _Nullable atid __attribute__((swift_name("atid")));
 @property (readonly) NSString * _Nullable mtid __attribute__((swift_name("mtid")));
-@property (readonly) NSString * _Nullable umid __attribute__((swift_name("umid")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
