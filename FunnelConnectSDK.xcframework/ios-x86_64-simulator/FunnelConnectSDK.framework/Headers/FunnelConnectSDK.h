@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FCSDKIdcData, FCSDKCdpPermissions, NSURL, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException, FCSDKKotlinByteIterator;
+@class FCSDKIdcData, FCSDKKotlinException, FCSDKCdpPermissions, NSURL, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKRestClientException, FCSDKKotlinByteIterator;
 
-@protocol FCSDKCdpServices, FCSDKTrustPidServices, FCSDKFunnelConnect, FCSDKRoute, FCSDKKotlinIterator;
+@protocol FCSDKCdpServices, FCSDKTrustPidServices, FCSDKKotlinIterator;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -150,7 +150,7 @@ __attribute__((swift_name("TrustPidServices")))
 - (void)acceptConsent __attribute__((swift_name("acceptConsent()")));
 - (BOOL)isConsentAccepted __attribute__((swift_name("isConsentAccepted()")));
 - (void)rejectConsent __attribute__((swift_name("rejectConsent()")));
-- (void)startServiceIsStub:(BOOL)isStub dataClosure:(void (^ _Nullable)(FCSDKIdcData *))dataClosure __attribute__((swift_name("startService(isStub:dataClosure:)")));
+- (void)startServiceIsStub:(BOOL)isStub dataCallback:(void (^ _Nullable)(FCSDKIdcData *))dataCallback errorCallback:(void (^ _Nullable)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("startService(isStub:dataCallback:errorCallback:)")));
 @end;
 
 __attribute__((swift_name("CdpServices")))
@@ -160,8 +160,9 @@ __attribute__((swift_name("CdpServices")))
 - (NSString * _Nullable)getUmid __attribute__((swift_name("getUmid()")));
 - (NSString * _Nullable)getUserId __attribute__((swift_name("getUserId()")));
 - (void)logEventKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("logEvent(key:value:)")));
+- (void)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events __attribute__((swift_name("logEvents(events:)")));
 - (void)setUserIdUserId:(NSString *)userId __attribute__((swift_name("setUserId(userId:)")));
-- (void)startServiceUserId:(NSString * _Nullable)userId dataClosure:(void (^ _Nullable)(NSString *))dataClosure __attribute__((swift_name("startService(userId:dataClosure:)")));
+- (void)startServiceUserId:(NSString * _Nullable)userId dataCallback:(void (^ _Nullable)(NSString *))dataCallback errorCallback:(void (^ _Nullable)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("startService(userId:dataCallback:errorCallback:)")));
 - (void)updatePermissionsOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("updatePermissions(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
 @end;
 
@@ -191,12 +192,6 @@ __attribute__((swift_name("FunnelConnect")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:)")));
-
-/**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
 - (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
 
 /**
@@ -208,7 +203,7 @@ __attribute__((swift_name("FunnelConnect")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FunnelConnectSDK")))
-@interface FCSDKFunnelConnectSDK : FCSDKBase <FCSDKFunnelConnect>
+@interface FCSDKFunnelConnectSDK : FCSDKBase
 + (instancetype)alloc __attribute__((unavailable));
 + (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
 + (instancetype)funnelConnectSDK __attribute__((swift_name("init()")));
@@ -236,12 +231,6 @@ __attribute__((swift_name("FunnelConnectSDK")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:)")));
-
-/**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
 - (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
 
 /**
@@ -251,13 +240,6 @@ __attribute__((swift_name("FunnelConnectSDK")))
 - (id<FCSDKTrustPidServices> _Nullable)trustPidAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("trustPid()")));
 @end;
 
-__attribute__((swift_name("IStringUtils")))
-@protocol FCSDKIStringUtils
-@required
-- (NSDictionary<NSString *, NSString *> *)extractKeysAndValuesFromHTMLHtmlString:(NSString *)htmlString removeCurleyBraces:(BOOL)removeCurleyBraces __attribute__((swift_name("extractKeysAndValuesFromHTML(htmlString:removeCurleyBraces:)")));
-- (NSDictionary<NSString *, NSString *> *)mapFromStringString:(NSString *)string delimiter:(NSString *)delimiter keyValueDelimiter:(NSString *)keyValueDelimiter __attribute__((swift_name("mapFromString(string:delimiter:keyValueDelimiter:)")));
-@end;
-
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Sha256")))
 @interface FCSDKSha256 : FCSDKBase
@@ -265,13 +247,11 @@ __attribute__((swift_name("Sha256")))
 - (FCSDKKotlinByteArray *)digest __attribute__((swift_name("digest()")));
 @end;
 
-__attribute__((swift_name("TeavaroLogger")))
-@protocol FCSDKTeavaroLogger
+__attribute__((swift_name("IStringUtils")))
+@protocol FCSDKIStringUtils
 @required
-- (BOOL)enableLogging __attribute__((swift_name("enableLogging()")));
-- (void)logString:(NSString *)string __attribute__((swift_name("log(string:)")));
-- (void)logTag:(NSString *)tag text:(NSString *)text __attribute__((swift_name("log(tag:text:)")));
-- (void)prettyPrintText:(NSString *)text __attribute__((swift_name("prettyPrint(text:)")));
+- (NSDictionary<NSString *, NSString *> *)extractKeysAndValuesFromHTMLHtmlString:(NSString *)htmlString removeCurleyBraces:(BOOL)removeCurleyBraces __attribute__((swift_name("extractKeysAndValuesFromHTML(htmlString:removeCurleyBraces:)")));
+- (NSDictionary<NSString *, NSString *> *)mapFromStringString:(NSString *)string delimiter:(NSString *)delimiter keyValueDelimiter:(NSString *)keyValueDelimiter __attribute__((swift_name("mapFromString(string:delimiter:keyValueDelimiter:)")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -314,7 +294,6 @@ __attribute__((swift_name("KotlinException")))
 
 __attribute__((swift_name("RestClientException")))
 @interface FCSDKRestClientException : FCSDKKotlinException
-- (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 + (instancetype)new __attribute__((unavailable));
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
@@ -333,7 +312,6 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("RestClientException.HttpError")))
 @interface FCSDKRestClientExceptionHttpError : FCSDKRestClientException
 - (instancetype)initWithStatusCode:(int32_t)statusCode errorMessage:(NSString *)errorMessage __attribute__((swift_name("init(statusCode:errorMessage:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (readonly) int32_t statusCode __attribute__((swift_name("statusCode")));
 @end;
 
@@ -347,25 +325,6 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("RestClientException.RedirectionError")))
 @interface FCSDKRestClientExceptionRedirectionError : FCSDKRestClientException
 - (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer));
-@end;
-
-__attribute__((swift_name("Route")))
-@protocol FCSDKRoute
-@required
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("RouteGET")))
-@interface FCSDKRouteGET : FCSDKBase <FCSDKRoute>
-- (instancetype)initWithUrl:(NSString *)url __attribute__((swift_name("init(url:)"))) __attribute__((objc_designated_initializer));
-@property (readonly) NSString *url __attribute__((swift_name("url")));
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("RoutePOST")))
-@interface FCSDKRoutePOST : FCSDKBase <FCSDKRoute>
-- (instancetype)initWithUrl:(NSString *)url __attribute__((swift_name("init(url:)"))) __attribute__((objc_designated_initializer));
-@property (readonly) NSString *url __attribute__((swift_name("url")));
 @end;
 
 __attribute__((swift_name("TeavaroLocalStorage")))
@@ -436,6 +395,12 @@ __attribute__((swift_name("KotlinByteArray")))
 
 @interface FCSDKKotlinByteArray (Extensions)
 - (NSString *)toHexString __attribute__((swift_name("toHexString()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("MapKt")))
+@interface FCSDKMapKt : FCSDKBase
++ (id _Nullable)getOrNull:(NSDictionary<NSString *, id> *)receiver key:(NSString *)key ignoreKeyCase:(BOOL)ignoreKeyCase __attribute__((swift_name("getOrNull(_:key:ignoreKeyCase:)")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
