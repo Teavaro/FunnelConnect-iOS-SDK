@@ -231,6 +231,12 @@ __attribute__((swift_name("FunnelConnectSDK")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
+- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:)")));
+
+/**
+ @note This method converts instances of Exception to errors.
+ Other uncaught Kotlin exceptions are fatal.
+*/
 - (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
 
 /**
