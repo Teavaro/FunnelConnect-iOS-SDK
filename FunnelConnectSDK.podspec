@@ -7,7 +7,7 @@ Pod::Spec.new do |spec|
     spec.pod_target_xcconfig      = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     spec.user_target_xcconfig     = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
     spec.authors                  = 'Teavaro'
-    spec.license                  = { :type => 'Commercial', :file => '/LICENSE' }
+    spec.license                  = { :type => 'Commercial', :file => 'LICENSE' }
     spec.vendored_frameworks      = 'funnelConnectSDK.xcframework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target    = '12'
