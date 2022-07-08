@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FCSDKIdcData, FCSDKKotlinException, FCSDKCdpPermissions, NSURL, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKRestClientException, FCSDKKotlinByteIterator;
+@class FCSDKKotlinException, FCSDKIdcData, FCSDKCdpPermissions, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKRestClientException, FCSDKKotlinByteIterator;
 
 @protocol FCSDKCdpServices, FCSDKTrustPidServices, FCSDKKotlinIterator;
 
@@ -150,6 +150,7 @@ __attribute__((swift_name("TrustPidServices")))
 - (void)acceptConsent __attribute__((swift_name("acceptConsent()")));
 - (BOOL)isConsentAccepted __attribute__((swift_name("isConsentAccepted()")));
 - (void)rejectConsent __attribute__((swift_name("rejectConsent()")));
+- (void)rejectConsentSuccessCallback:(void (^)(void))successCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("rejectConsent(successCallback:errorCallback:)")));
 - (void)startServiceIsStub:(BOOL)isStub dataCallback:(void (^ _Nullable)(FCSDKIdcData *))dataCallback errorCallback:(void (^ _Nullable)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("startService(isStub:dataCallback:errorCallback:)")));
 @end;
 
@@ -160,9 +161,13 @@ __attribute__((swift_name("CdpServices")))
 - (NSString * _Nullable)getUmid __attribute__((swift_name("getUmid()")));
 - (NSString * _Nullable)getUserId __attribute__((swift_name("getUserId()")));
 - (void)logEventKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("logEvent(key:value:)")));
+- (void)logEventKey:(NSString *)key value:(NSString *)value successCallback:(void (^)(void))successCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("logEvent(key:value:successCallback:errorCallback:)")));
 - (void)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events __attribute__((swift_name("logEvents(events:)")));
+- (void)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events successCallback:(void (^)(void))successCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("logEvents(events:successCallback:errorCallback:)")));
 - (void)setUserIdUserId:(NSString *)userId __attribute__((swift_name("setUserId(userId:)")));
-- (void)startServiceUserId:(NSString * _Nullable)userId dataCallback:(void (^ _Nullable)(NSString *))dataCallback errorCallback:(void (^ _Nullable)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("startService(userId:dataCallback:errorCallback:)")));
+- (void)setUserIdUserId:(NSString *)userId dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("setUserId(userId:dataCallback:errorCallback:)")));
+- (void)startServiceUserId:(NSString * _Nullable)userId __attribute__((swift_name("startService(userId:)")));
+- (void)startServiceUserId:(NSString * _Nullable)userId dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("startService(userId:dataCallback:errorCallback:)")));
 - (void)updatePermissionsOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("updatePermissions(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
 @end;
 
@@ -192,7 +197,7 @@ __attribute__((swift_name("FunnelConnect")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
+- (BOOL)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(sdkToken:options:)")));
 
 /**
  @note This method converts instances of Exception to errors.
@@ -231,13 +236,13 @@ __attribute__((swift_name("FunnelConnectSDK")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:)")));
+- (BOOL)initializeSdkToken:(NSString *)sdkToken error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(sdkToken:)")));
 
 /**
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (BOOL)initializeJsonConfigFileURL:(NSURL *)jsonConfigFileURL options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(jsonConfigFileURL:options:)")));
+- (BOOL)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(sdkToken:options:)")));
 
 /**
  @note This method converts instances of Exception to errors.
@@ -256,8 +261,7 @@ __attribute__((swift_name("Sha256")))
 __attribute__((swift_name("IStringUtils")))
 @protocol FCSDKIStringUtils
 @required
-- (NSDictionary<NSString *, NSString *> *)extractKeysAndValuesFromHTMLHtmlString:(NSString *)htmlString removeCurleyBraces:(BOOL)removeCurleyBraces __attribute__((swift_name("extractKeysAndValuesFromHTML(htmlString:removeCurleyBraces:)")));
-- (NSDictionary<NSString *, NSString *> *)mapFromStringString:(NSString *)string delimiter:(NSString *)delimiter keyValueDelimiter:(NSString *)keyValueDelimiter __attribute__((swift_name("mapFromString(string:delimiter:keyValueDelimiter:)")));
+- (NSDictionary<NSString *, NSString *> *)extractTopLevelKeysAndValuesFromJavascriptWrappedInHTMLHtmlString:(NSString *)htmlString removeCurleyBraces:(BOOL)removeCurleyBraces __attribute__((swift_name("extractTopLevelKeysAndValuesFromJavascriptWrappedInHTML(htmlString:removeCurleyBraces:)")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
