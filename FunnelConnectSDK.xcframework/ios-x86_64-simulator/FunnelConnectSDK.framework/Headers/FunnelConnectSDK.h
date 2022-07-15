@@ -192,12 +192,7 @@ __attribute__((swift_name("FunnelConnect")))
  Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
-
-/**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
-- (BOOL)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(sdkToken:options:)")));
+- (void)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
 
 /**
  @note This method converts instances of Exception to errors.
@@ -231,18 +226,8 @@ __attribute__((swift_name("FunnelConnectSDK")))
  Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
-
-/**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
-- (BOOL)initializeSdkToken:(NSString *)sdkToken error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(sdkToken:)")));
-
-/**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
-*/
-- (BOOL)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("initialize(sdkToken:options:)")));
+- (void)initializeSdkToken:(NSString *)sdkToken __attribute__((swift_name("initialize(sdkToken:)")));
+- (void)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
 
 /**
  @note This method converts instances of Exception to errors.

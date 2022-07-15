@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'FunnelConnectSDK'
-    spec.version                  = '0.1.8'
+    spec.version                  = '0.1.9'
     spec.summary                  = 'FunnelConnectSDK for iOS'
     spec.homepage                 = 'https://github.com/Teavaro/FunnelConnect-iOS-SDK'
     spec.source                   = { :git=> 'https://github.com/Teavaro/FunnelConnect-iOS-SDK.git', :tag => spec.version.to_s }
