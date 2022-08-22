@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FCSDKKotlinException, FCSDKIdcData, FCSDKCdpPermissions, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKRestClientException, FCSDKKotlinByteIterator;
+@class NSError, FCSDKIdcData, FCSDKPermissionsMap, FCSDKFCUser, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException, FCSDKBasicCdpPermission, FCSDKKotlinByteIterator;
 
-@protocol FCSDKCdpServices, FCSDKTrustPidServices, FCSDKKotlinIterator;
+@protocol FCSDKCdpService, FCSDKTrustPidService, FCSDKKotlinIterator;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -144,31 +144,37 @@ __attribute__((swift_name("KotlinBoolean")))
 + (instancetype)numberWithBool:(BOOL)value;
 @end;
 
-__attribute__((swift_name("TrustPidServices")))
-@protocol FCSDKTrustPidServices
+__attribute__((swift_name("TrustPidService")))
+@protocol FCSDKTrustPidService
 @required
 - (void)acceptConsent __attribute__((swift_name("acceptConsent()")));
 - (BOOL)isConsentAccepted __attribute__((swift_name("isConsentAccepted()")));
 - (void)rejectConsent __attribute__((swift_name("rejectConsent()")));
-- (void)rejectConsentSuccessCallback:(void (^)(void))successCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("rejectConsent(successCallback:errorCallback:)")));
-- (void)startServiceIsStub:(BOOL)isStub dataCallback:(void (^ _Nullable)(FCSDKIdcData *))dataCallback errorCallback:(void (^ _Nullable)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("startService(isStub:dataCallback:errorCallback:)")));
+- (void)rejectConsentSuccessCallback:(void (^)(void))successCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("rejectConsent(successCallback:errorCallback:)")));
+- (void)startServiceIsStub:(BOOL)isStub dataCallback:(void (^ _Nullable)(FCSDKIdcData *))dataCallback errorCallback:(void (^ _Nullable)(NSError *))errorCallback __attribute__((swift_name("startService(isStub:dataCallback:errorCallback:)")));
 @end;
 
-__attribute__((swift_name("CdpServices")))
-@protocol FCSDKCdpServices
+__attribute__((swift_name("CdpService")))
+@protocol FCSDKCdpService
 @required
-- (FCSDKCdpPermissions *)getPermissions __attribute__((swift_name("getPermissions()")));
+- (FCSDKPermissionsMap *)getPermissions __attribute__((swift_name("getPermissions()")));
 - (NSString * _Nullable)getUmid __attribute__((swift_name("getUmid()")));
 - (NSString * _Nullable)getUserId __attribute__((swift_name("getUserId()")));
 - (void)logEventKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("logEvent(key:value:)")));
-- (void)logEventKey:(NSString *)key value:(NSString *)value successCallback:(void (^)(void))successCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("logEvent(key:value:successCallback:errorCallback:)")));
+- (void)logEventKey:(NSString *)key value:(NSString *)value successCallback:(void (^)(void))successCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("logEvent(key:value:successCallback:errorCallback:)")));
 - (void)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events __attribute__((swift_name("logEvents(events:)")));
-- (void)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events successCallback:(void (^)(void))successCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("logEvents(events:successCallback:errorCallback:)")));
-- (void)setUserIdUserId:(NSString *)userId __attribute__((swift_name("setUserId(userId:)")));
-- (void)setUserIdUserId:(NSString *)userId dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("setUserId(userId:dataCallback:errorCallback:)")));
-- (void)startServiceUserId:(NSString * _Nullable)userId __attribute__((swift_name("startService(userId:)")));
-- (void)startServiceUserId:(NSString * _Nullable)userId dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(FCSDKKotlinException *))errorCallback __attribute__((swift_name("startService(userId:dataCallback:errorCallback:)")));
-- (void)updatePermissionsOmPermissionAccepted:(BOOL)omPermissionAccepted optPermissionAccepted:(BOOL)optPermissionAccepted nbaPermissionAccepted:(BOOL)nbaPermissionAccepted __attribute__((swift_name("updatePermissions(omPermissionAccepted:optPermissionAccepted:nbaPermissionAccepted:)")));
+- (void)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events successCallback:(void (^)(void))successCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("logEvents(events:successCallback:errorCallback:)")));
+- (void)setUserFcUser:(FCSDKFCUser *)fcUser __attribute__((swift_name("setUser(fcUser:)")));
+- (void)setUserFcUser:(FCSDKFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("setUser(fcUser:dataCallback:errorCallback:)")));
+- (void)startService __attribute__((swift_name("startService()")));
+- (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
+- (void)startServiceFcUser:(FCSDKFCUser *)fcUser __attribute__((swift_name("startService(fcUser:)")));
+- (void)startServiceFcUser:(FCSDKFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:dataCallback:errorCallback:)")));
+- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(fcUser:notificationsVersion:)")));
+- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)startServiceNotificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(notificationsVersion:)")));
+- (void)startServiceNotificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsVersion:dataCallback:errorCallback:)")));
+- (void)updatePermissionsPermissions:(FCSDKPermissionsMap *)permissions notificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("updatePermissions(permissions:notificationsVersion:)")));
 @end;
 
 __attribute__((swift_name("FunnelConnect")))
@@ -179,7 +185,7 @@ __attribute__((swift_name("FunnelConnect")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (id<FCSDKCdpServices> _Nullable)cdpAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("cdp()")));
+- (id<FCSDKCdpService> _Nullable)cdpAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("cdp()")));
 
 /**
  @note This method converts instances of Exception to errors.
@@ -192,13 +198,15 @@ __attribute__((swift_name("FunnelConnect")))
  Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
+- (void)didInitializeWithResultSuccess:(void (^)(void))success failure:(void (^)(NSError *))failure __attribute__((swift_name("didInitializeWithResult(success:failure:)")));
 - (void)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
+- (BOOL)isInitialized __attribute__((swift_name("isInitialized()")));
 
 /**
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (id<FCSDKTrustPidServices> _Nullable)trustPidAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("trustPid()")));
+- (id<FCSDKTrustPidService> _Nullable)trustPidAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("trustPid()")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -213,7 +221,7 @@ __attribute__((swift_name("FunnelConnectSDK")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (id<FCSDKCdpServices> _Nullable)cdpAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("cdp()")));
+- (id<FCSDKCdpService> _Nullable)cdpAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("cdp()")));
 
 /**
  @note This method converts instances of Exception to errors.
@@ -233,7 +241,22 @@ __attribute__((swift_name("FunnelConnectSDK")))
  @note This method converts instances of Exception to errors.
  Other uncaught Kotlin exceptions are fatal.
 */
-- (id<FCSDKTrustPidServices> _Nullable)trustPidAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("trustPid()")));
+- (id<FCSDKTrustPidService> _Nullable)trustPidAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("trustPid()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("PermissionsMap")))
+@interface FCSDKPermissionsMap : FCSDKBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("init(key:accepted:)"))) __attribute__((objc_designated_initializer));
+- (void)addPermissionKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("addPermission(key:accepted:)")));
+- (void)clear __attribute__((swift_name("clear()")));
+- (BOOL)containsKeyKey:(NSString *)key __attribute__((swift_name("containsKey(key:)")));
+- (BOOL)containsValueValue:(BOOL)value __attribute__((swift_name("containsValue(value:)")));
+- (BOOL)getPermissionKey:(NSString *)key __attribute__((swift_name("getPermission(key:)")));
+- (BOOL)isEmpty __attribute__((swift_name("isEmpty()")));
+- (void)removeKey:(NSString *)key __attribute__((swift_name("remove(key:)")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -328,6 +351,7 @@ __attribute__((swift_name("TeavaroLocalStorage")))
 - (void)clear __attribute__((swift_name("clear()")));
 - (BOOL)getBooleanValueKey:(NSString *)key __attribute__((swift_name("getBooleanValue(key:)")));
 - (NSString * _Nullable)getStringValueKey:(NSString *)key __attribute__((swift_name("getStringValue(key:)")));
+- (BOOL)hasKeyKey:(NSString *)key __attribute__((swift_name("hasKey(key:)")));
 - (void)removeValueKey:(NSString *)key __attribute__((swift_name("removeValue(key:)")));
 - (void)saveKey:(NSString *)key value:(BOOL)value __attribute__((swift_name("save(key:value:)")));
 - (void)saveKey:(NSString *)key value_:(NSString *)value __attribute__((swift_name("save(key:value_:)")));
@@ -346,6 +370,20 @@ __attribute__((swift_name("FCOptions")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("FCUser")))
+@interface FCSDKFCUser : FCSDKBase
+- (instancetype)initWithUserIdType:(NSString *)userIdType userId:(NSString *)userId __attribute__((swift_name("init(userIdType:userId:)"))) __attribute__((objc_designated_initializer));
+- (NSString *)component1 __attribute__((swift_name("component1()")));
+- (NSString *)component2 __attribute__((swift_name("component2()")));
+- (FCSDKFCUser *)doCopyUserIdType:(NSString *)userIdType userId:(NSString *)userId __attribute__((swift_name("doCopy(userIdType:userId:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *userId __attribute__((swift_name("userId")));
+@property (readonly) NSString *userIdType __attribute__((swift_name("userIdType")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("IdcData")))
 @interface FCSDKIdcData : FCSDKBase
 - (instancetype)initWithMtid:(NSString * _Nullable)mtid atid:(NSString * _Nullable)atid __attribute__((swift_name("init(mtid:atid:)"))) __attribute__((objc_designated_initializer));
@@ -360,19 +398,19 @@ __attribute__((swift_name("IdcData")))
 @end;
 
 __attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("CdpPermissions")))
-@interface FCSDKCdpPermissions : FCSDKBase
-- (instancetype)initWithOmAccepted:(BOOL)omAccepted optAccepted:(BOOL)optAccepted nbaAccepted:(BOOL)nbaAccepted __attribute__((swift_name("init(omAccepted:optAccepted:nbaAccepted:)"))) __attribute__((objc_designated_initializer));
-- (BOOL)component1 __attribute__((swift_name("component1()")));
-- (BOOL)component2 __attribute__((swift_name("component2()")));
-- (BOOL)component3 __attribute__((swift_name("component3()")));
-- (FCSDKCdpPermissions *)doCopyOmAccepted:(BOOL)omAccepted optAccepted:(BOOL)optAccepted nbaAccepted:(BOOL)nbaAccepted __attribute__((swift_name("doCopy(omAccepted:optAccepted:nbaAccepted:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) BOOL nbaAccepted __attribute__((swift_name("nbaAccepted")));
-@property (readonly) BOOL omAccepted __attribute__((swift_name("omAccepted")));
-@property (readonly) BOOL optAccepted __attribute__((swift_name("optAccepted")));
+__attribute__((swift_name("BasicCdpPermission")))
+@interface FCSDKBasicCdpPermission : FCSDKBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)basicCdpPermission __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) FCSDKBasicCdpPermission *shared __attribute__((swift_name("shared")));
+@property (readonly) NSString *LI_NBA __attribute__((swift_name("LI_NBA")));
+@property (readonly) NSString *LI_OM __attribute__((swift_name("LI_OM")));
+@property (readonly) NSString *LI_OPT __attribute__((swift_name("LI_OPT")));
+@end;
+
+@interface FCSDKKotlinException (Extensions)
+- (NSError *)createNSErrorFromKotlinException __attribute__((swift_name("createNSErrorFromKotlinException()")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
