@@ -234,8 +234,10 @@ __attribute__((swift_name("FunnelConnectSDK")))
  Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
+- (void)didInitializeWithResultSuccess:(void (^)(void))success failure:(void (^)(NSError *))failure __attribute__((swift_name("didInitializeWithResult(success:failure:)")));
 - (void)initializeSdkToken:(NSString *)sdkToken __attribute__((swift_name("initialize(sdkToken:)")));
 - (void)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
+- (BOOL)isInitialize __attribute__((swift_name("isInitialize()")));
 
 /**
  @note This method converts instances of Exception to errors.
