@@ -151,7 +151,10 @@ __attribute__((swift_name("TrustPidService")))
 - (BOOL)isConsentAccepted __attribute__((swift_name("isConsentAccepted()")));
 - (void)rejectConsent __attribute__((swift_name("rejectConsent()")));
 - (void)rejectConsentSuccessCallback:(void (^)(void))successCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("rejectConsent(successCallback:errorCallback:)")));
-- (void)startServiceIsStub:(BOOL)isStub dataCallback:(void (^ _Nullable)(FCSDKIdcData *))dataCallback errorCallback:(void (^ _Nullable)(NSError *))errorCallback __attribute__((swift_name("startService(isStub:dataCallback:errorCallback:)")));
+- (void)startService __attribute__((swift_name("startService()")));
+- (void)startServiceDataCallback:(void (^)(FCSDKIdcData *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
+- (void)startServiceIsStub:(BOOL)isStub __attribute__((swift_name("startService(isStub:)")));
+- (void)startServiceIsStub:(BOOL)isStub dataCallback:(void (^)(FCSDKIdcData *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(isStub:dataCallback:errorCallback:)")));
 @end;
 
 __attribute__((swift_name("CdpService")))
@@ -167,7 +170,7 @@ __attribute__((swift_name("CdpService")))
 - (void)setUserFcUser:(FCSDKFCUser *)fcUser __attribute__((swift_name("setUser(fcUser:)")));
 - (void)setUserFcUser:(FCSDKFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("setUser(fcUser:dataCallback:errorCallback:)")));
 - (void)startService __attribute__((swift_name("startService()")));
-- (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
+- (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback_:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback_:)")));
 - (void)startServiceFcUser:(FCSDKFCUser *)fcUser __attribute__((swift_name("startService(fcUser:)")));
 - (void)startServiceFcUser:(FCSDKFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:dataCallback:errorCallback:)")));
 - (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(fcUser:notificationsVersion:)")));
