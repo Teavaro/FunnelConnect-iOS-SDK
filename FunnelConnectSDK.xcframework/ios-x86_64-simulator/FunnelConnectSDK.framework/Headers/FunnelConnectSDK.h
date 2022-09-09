@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class NSError, FCSDKIdcData, FCSDKPermissionsMap, FCSDKFCUser, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException, FCSDKBasicCdpPermission, FCSDKKotlinByteIterator;
+@class NSError, FCSDKIdcData, FCSDKPermissionsMap, FCSDKFCUser, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKPlatformArray<T>, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException, FCSDKBasicCdpPermission, FCSDKKotlinByteIterator;
 
-@protocol FCSDKCdpService, FCSDKTrustPidService, FCSDKKotlinIterator;
+@protocol FCSDKCdpService, FCSDKTrustPidService, FCSDKKotlinIterator, FCSDKKotlinIterable;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -259,9 +259,28 @@ __attribute__((swift_name("PermissionsMap")))
 - (void)clear __attribute__((swift_name("clear()")));
 - (BOOL)containsKeyKey:(NSString *)key __attribute__((swift_name("containsKey(key:)")));
 - (BOOL)containsValueValue:(BOOL)value __attribute__((swift_name("containsValue(value:)")));
+- (FCSDKPlatformArray<NSString *> *)getAllKeys __attribute__((swift_name("getAllKeys()")));
 - (BOOL)getPermissionKey:(NSString *)key __attribute__((swift_name("getPermission(key:)")));
 - (BOOL)isEmpty __attribute__((swift_name("isEmpty()")));
 - (void)removeKey:(NSString *)key __attribute__((swift_name("remove(key:)")));
+@end;
+
+__attribute__((swift_name("KotlinIterable")))
+@protocol FCSDKKotlinIterable
+@required
+- (id<FCSDKKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
+@end;
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("PlatformArray")))
+@interface FCSDKPlatformArray<T> : FCSDKBase <FCSDKKotlinIterable>
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (void)addElement:(T _Nullable)element __attribute__((swift_name("add(element:)")));
+- (void)clear __attribute__((swift_name("clear()")));
+- (BOOL)isEmpty __attribute__((swift_name("isEmpty()")));
+- (id<FCSDKKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
+@property (readonly) int32_t size __attribute__((swift_name("size")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
@@ -441,6 +460,13 @@ __attribute__((swift_name("MapKt")))
 + (id _Nullable)getOrNull:(NSDictionary<NSString *, id> *)receiver key:(NSString *)key ignoreKeyCase:(BOOL)ignoreKeyCase __attribute__((swift_name("getOrNull(_:key:ignoreKeyCase:)")));
 @end;
 
+__attribute__((swift_name("KotlinIterator")))
+@protocol FCSDKKotlinIterator
+@required
+- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
+- (id _Nullable)next __attribute__((swift_name("next()")));
+@end;
+
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinArray")))
 @interface FCSDKKotlinArray<T> : FCSDKBase
@@ -451,13 +477,6 @@ __attribute__((swift_name("KotlinArray")))
 - (id<FCSDKKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
 - (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
 @property (readonly) int32_t size __attribute__((swift_name("size")));
-@end;
-
-__attribute__((swift_name("KotlinIterator")))
-@protocol FCSDKKotlinIterator
-@required
-- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
-- (id _Nullable)next __attribute__((swift_name("next()")));
 @end;
 
 __attribute__((swift_name("KotlinByteIterator")))
