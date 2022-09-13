@@ -177,7 +177,7 @@ __attribute__((swift_name("CdpService")))
 - (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:notificationsVersion:dataCallback:errorCallback:)")));
 - (void)startServiceNotificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(notificationsVersion:)")));
 - (void)startServiceNotificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsVersion:dataCallback:errorCallback:)")));
-- (void)updatePermissionsPermissions:(FCSDKPermissionsMap *)permissions notificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("updatePermissions(permissions:notificationsVersion:)")));
+- (void)updatePermissionsPermissions:(FCSDKPermissionsMap *)permissions notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsVersion:dataCallback:errorCallback:)")));
 @end;
 
 __attribute__((swift_name("FunnelConnect")))
