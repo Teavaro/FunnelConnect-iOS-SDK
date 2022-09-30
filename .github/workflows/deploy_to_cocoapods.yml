@@ -11,7 +11,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: Exit if not a tagged commit
       if: startsWith(github.ref, 'refs/tags/*') == false
-      run: exit 0
+      run: |
+        echo "Skip publishing a new Cocoapo version for non tagged commit."
+        exit 0
     - name: Install Cocoapods
       run: gem install cocoapods
     - name: Deploy to Cocoapods
