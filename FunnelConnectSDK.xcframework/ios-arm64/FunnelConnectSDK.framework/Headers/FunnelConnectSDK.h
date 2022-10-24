@@ -289,8 +289,8 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Reference")))
 @interface FCSDKReference<__covariant T> : FCSDKBase
 - (instancetype)initWithCurrent:(T _Nullable)current initor:(T _Nullable (^)(void))initor __attribute__((swift_name("init(current:initor:)"))) __attribute__((objc_designated_initializer));
-- (T _Nullable)component1 __attribute__((swift_name("component1()")));
-- (T _Nullable (^)(void))component2 __attribute__((swift_name("component2()")));
+- (T _Nullable)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
+- (T _Nullable (^)(void))component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
 - (FCSDKReference<T> *)doCopyCurrent:(T _Nullable)current initor:(T _Nullable (^)(void))initor __attribute__((swift_name("doCopy(current:initor:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -374,7 +374,7 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FCOptions")))
 @interface FCSDKFCOptions : FCSDKBase
 - (instancetype)initWithEnableLogging:(BOOL)enableLogging __attribute__((swift_name("init(enableLogging:)"))) __attribute__((objc_designated_initializer));
-- (BOOL)component1 __attribute__((swift_name("component1()")));
+- (BOOL)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
 - (FCSDKFCOptions *)doCopyEnableLogging:(BOOL)enableLogging __attribute__((swift_name("doCopy(enableLogging:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -386,8 +386,8 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FCUser")))
 @interface FCSDKFCUser : FCSDKBase
 - (instancetype)initWithUserIdType:(NSString *)userIdType userId:(NSString *)userId __attribute__((swift_name("init(userIdType:userId:)"))) __attribute__((objc_designated_initializer));
-- (NSString *)component1 __attribute__((swift_name("component1()")));
-- (NSString *)component2 __attribute__((swift_name("component2()")));
+- (NSString *)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
+- (NSString *)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
 - (FCSDKFCUser *)doCopyUserIdType:(NSString *)userIdType userId:(NSString *)userId __attribute__((swift_name("doCopy(userIdType:userId:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
@@ -400,8 +400,8 @@ __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("IdcData")))
 @interface FCSDKIdcData : FCSDKBase
 - (instancetype)initWithMtid:(NSString * _Nullable)mtid atid:(NSString * _Nullable)atid __attribute__((swift_name("init(mtid:atid:)"))) __attribute__((objc_designated_initializer));
-- (NSString * _Nullable)component1 __attribute__((swift_name("component1()")));
-- (NSString * _Nullable)component2 __attribute__((swift_name("component2()")));
+- (NSString * _Nullable)component1 __attribute__((swift_name("component1()"))) __attribute__((deprecated("use corresponding property instead")));
+- (NSString * _Nullable)component2 __attribute__((swift_name("component2()"))) __attribute__((deprecated("use corresponding property instead")));
 - (FCSDKIdcData *)doCopyMtid:(NSString * _Nullable)mtid atid:(NSString * _Nullable)atid __attribute__((swift_name("doCopy(mtid:atid:)")));
 - (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
 - (NSUInteger)hash __attribute__((swift_name("hash()")));

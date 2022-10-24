@@ -3,4 +3,6 @@ framework module FunnelConnectSDK {
 
     export *
     module * { export * }
+
+    use Foundation
 }
