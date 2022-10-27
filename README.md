@@ -10,8 +10,27 @@
 </p>
 
 
+</p>
+
+## Index
+
+- [Overview](#overview)
+- [Installation and integration](#installation-and-integration)
+- [Support and bug reporting](#support-and-bug-reporting)
+- [License](#license)
+
 ## Overview
 FunnelConnect-iOS SDK reduces the time and the overhead required to integrate with FunnelConnect APIs and provides direct access to FunnelConnect services.
 
 ## Installation and integration:
 For installation and integration please check the SDK [documentation](https://docs.teavaro.com/documentation/).
+
+
+## Support and bug reporting:
+- If you want to report a bug or you have any suggestions or a question, please create a new issue on this **[GitHub repository](https://github.com/Teavaro/FunnelConnect-Mobile-SDK-Tracker/issues/new)**.
+- You can also check if there is a similar issue to yours that has been solved before **[here](https://github.com/Teavaro/FunnelConnect-Mobile-SDK-Tracker/issues)**.
+- [Send us an email](mailto:clientsdks@teavaro.com  "Email us")
+
+## License:
+**FunnelConnect-iOS SDK** is released under **Teavaro Ltd. [license](https://github.com/Teavaro/FunnelConnect-iOS-SDK/blob/main/LICENSE)**.
+
