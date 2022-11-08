@@ -269,7 +269,7 @@ __attribute__((swift_name("PermissionsMap")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("init(key:accepted:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-- (NSArray<id> *)getAllKeys __attribute__((swift_name("getAllKeys()")));
+- (NSArray<NSString *> *)getAllKeys __attribute__((swift_name("getAllKeys()")));
 @end;
 
 __attribute__((objc_subclassing_restricted))
