@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class NSError, FCSDKIdcData, FCSDKPermissionsMap, FCSDKFCUser, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKBasePermissionsMap, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException, FCSDKBasicCdpPermission, FCSDKKotlinByteIterator;
+@class NSError, FCSDKIdcData, FCSDKPermissionsMap, FCSDKFCUser, FCSDKFCOptions, FCSDKFunnelConnectSDK, FCSDKBasePermissionsMap, FCSDKKotlinByteArray, FCSDKReference<__covariant T>, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinException, FCSDKRestClientException, FCSDKKotlinByteIterator;
 
 @protocol FCSDKCdpService, FCSDKTrustPidService, FCSDKKotlinIterator;
 
@@ -27,22 +27,22 @@ __attribute__((swift_name("KotlinBase")))
 - (instancetype)init __attribute__((unavailable));
 + (instancetype)new __attribute__((unavailable));
 + (void)initialize __attribute__((objc_requires_super));
-@end;
+@end
 
 @interface FCSDKBase (FCSDKBaseCopying) <NSCopying>
-@end;
+@end
 
 __attribute__((swift_name("KotlinMutableSet")))
 @interface FCSDKMutableSet<ObjectType> : NSMutableSet<ObjectType>
-@end;
+@end
 
 __attribute__((swift_name("KotlinMutableDictionary")))
 @interface FCSDKMutableDictionary<KeyType, ObjectType> : NSMutableDictionary<KeyType, ObjectType>
-@end;
+@end
 
 @interface NSError (NSErrorFCSDKKotlinException)
 @property (readonly) id _Nullable kotlinException;
-@end;
+@end
 
 __attribute__((swift_name("KotlinNumber")))
 @interface FCSDKNumber : NSNumber
@@ -76,73 +76,73 @@ __attribute__((swift_name("KotlinNumber")))
 + (instancetype)numberWithBool:(BOOL)value __attribute__((unavailable));
 + (instancetype)numberWithInteger:(NSInteger)value __attribute__((unavailable));
 + (instancetype)numberWithUnsignedInteger:(NSUInteger)value __attribute__((unavailable));
-@end;
+@end
 
 __attribute__((swift_name("KotlinByte")))
 @interface FCSDKByte : FCSDKNumber
 - (instancetype)initWithChar:(char)value;
 + (instancetype)numberWithChar:(char)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinUByte")))
 @interface FCSDKUByte : FCSDKNumber
 - (instancetype)initWithUnsignedChar:(unsigned char)value;
 + (instancetype)numberWithUnsignedChar:(unsigned char)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinShort")))
 @interface FCSDKShort : FCSDKNumber
 - (instancetype)initWithShort:(short)value;
 + (instancetype)numberWithShort:(short)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinUShort")))
 @interface FCSDKUShort : FCSDKNumber
 - (instancetype)initWithUnsignedShort:(unsigned short)value;
 + (instancetype)numberWithUnsignedShort:(unsigned short)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinInt")))
 @interface FCSDKInt : FCSDKNumber
 - (instancetype)initWithInt:(int)value;
 + (instancetype)numberWithInt:(int)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinUInt")))
 @interface FCSDKUInt : FCSDKNumber
 - (instancetype)initWithUnsignedInt:(unsigned int)value;
 + (instancetype)numberWithUnsignedInt:(unsigned int)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinLong")))
 @interface FCSDKLong : FCSDKNumber
 - (instancetype)initWithLongLong:(long long)value;
 + (instancetype)numberWithLongLong:(long long)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinULong")))
 @interface FCSDKULong : FCSDKNumber
 - (instancetype)initWithUnsignedLongLong:(unsigned long long)value;
 + (instancetype)numberWithUnsignedLongLong:(unsigned long long)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinFloat")))
 @interface FCSDKFloat : FCSDKNumber
 - (instancetype)initWithFloat:(float)value;
 + (instancetype)numberWithFloat:(float)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinDouble")))
 @interface FCSDKDouble : FCSDKNumber
 - (instancetype)initWithDouble:(double)value;
 + (instancetype)numberWithDouble:(double)value;
-@end;
+@end
 
 __attribute__((swift_name("KotlinBoolean")))
 @interface FCSDKBoolean : FCSDKNumber
 - (instancetype)initWithBool:(BOOL)value;
 + (instancetype)numberWithBool:(BOOL)value;
-@end;
+@end
 
 __attribute__((swift_name("TrustPidService")))
 @protocol FCSDKTrustPidService
@@ -155,7 +155,7 @@ __attribute__((swift_name("TrustPidService")))
 - (void)startServiceDataCallback:(void (^)(FCSDKIdcData *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
 - (void)startServiceIsStub:(BOOL)isStub __attribute__((swift_name("startService(isStub:)")));
 - (void)startServiceIsStub:(BOOL)isStub dataCallback:(void (^)(FCSDKIdcData *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(isStub:dataCallback:errorCallback:)")));
-@end;
+@end
 
 __attribute__((swift_name("CdpService")))
 @protocol FCSDKCdpService
@@ -178,27 +178,27 @@ __attribute__((swift_name("CdpService")))
 - (void)startServiceNotificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(notificationsVersion:)")));
 - (void)startServiceNotificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsVersion:dataCallback:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FCSDKPermissionsMap *)permissions notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsVersion:dataCallback:errorCallback:)")));
-@end;
+@end
 
 __attribute__((swift_name("FunnelConnect")))
 @protocol FCSDKFunnelConnect
 @required
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (id<FCSDKCdpService> _Nullable)cdpAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("cdp()")));
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearCookiesAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearCookies()")));
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
 - (void)didInitializeWithResultSuccess:(void (^)(void))success failure:(void (^)(NSError *))failure __attribute__((swift_name("didInitializeWithResult(success:failure:)")));
@@ -206,11 +206,11 @@ __attribute__((swift_name("FunnelConnect")))
 - (BOOL)isInitialized __attribute__((swift_name("isInitialized()")));
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (id<FCSDKTrustPidService> _Nullable)trustPidAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("trustPid()")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FunnelConnectSDK")))
@@ -221,20 +221,20 @@ __attribute__((swift_name("FunnelConnectSDK")))
 @property (class, readonly, getter=shared) FCSDKFunnelConnectSDK *shared __attribute__((swift_name("shared")));
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (id<FCSDKCdpService> _Nullable)cdpAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("cdp()")));
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearCookiesAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearCookies()")));
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
 - (void)didInitializeWithResultSuccess:(void (^)(void))success failure:(void (^)(NSError *))failure __attribute__((swift_name("didInitializeWithResult(success:failure:)")));
@@ -243,11 +243,11 @@ __attribute__((swift_name("FunnelConnectSDK")))
 - (BOOL)isInitialize __attribute__((swift_name("isInitialize()")));
 
 /**
- @note This method converts instances of Exception to errors.
- Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
 */
 - (id<FCSDKTrustPidService> _Nullable)trustPidAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("trustPid()")));
-@end;
+@end
 
 __attribute__((swift_name("BasePermissionsMap")))
 @interface FCSDKBasePermissionsMap : FCSDKBase
@@ -261,7 +261,7 @@ __attribute__((swift_name("BasePermissionsMap")))
 - (BOOL)getPermissionKey:(NSString *)key __attribute__((swift_name("getPermission(key:)")));
 - (BOOL)isEmpty __attribute__((swift_name("isEmpty()")));
 - (void)removeKey:(NSString *)key __attribute__((swift_name("remove(key:)")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("PermissionsMap")))
@@ -270,20 +270,20 @@ __attribute__((swift_name("PermissionsMap")))
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("init(key:accepted:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (NSArray<NSString *> *)getAllKeys __attribute__((swift_name("getAllKeys()")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Sha256")))
 @interface FCSDKSha256 : FCSDKBase
 - (instancetype)initWithPlanString:(NSString *)planString __attribute__((swift_name("init(planString:)"))) __attribute__((objc_designated_initializer));
 - (FCSDKKotlinByteArray *)digest __attribute__((swift_name("digest()")));
-@end;
+@end
 
 __attribute__((swift_name("IStringUtils")))
 @protocol FCSDKIStringUtils
 @required
 - (NSDictionary<NSString *, NSString *> *)extractTopLevelKeysAndValuesFromJavascriptWrappedInHTMLHtmlString:(NSString *)htmlString removeCurleyBraces:(BOOL)removeCurleyBraces __attribute__((swift_name("extractTopLevelKeysAndValuesFromJavascriptWrappedInHTML(htmlString:removeCurleyBraces:)")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Reference")))
@@ -297,7 +297,7 @@ __attribute__((swift_name("Reference")))
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) T _Nullable current __attribute__((swift_name("current")));
 @property (readonly) T _Nullable (^initor)(void) __attribute__((swift_name("initor")));
-@end;
+@end
 
 __attribute__((swift_name("KotlinThrowable")))
 @interface FCSDKKotlinThrowable : FCSDKBase
@@ -312,7 +312,7 @@ __attribute__((swift_name("KotlinThrowable")))
 @property (readonly) FCSDKKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
 @property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
 - (NSError *)asError __attribute__((swift_name("asError()")));
-@end;
+@end
 
 __attribute__((swift_name("KotlinException")))
 @interface FCSDKKotlinException : FCSDKKotlinThrowable
@@ -321,7 +321,7 @@ __attribute__((swift_name("KotlinException")))
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
-@end;
+@end
 
 __attribute__((swift_name("RestClientException")))
 @interface FCSDKRestClientException : FCSDKKotlinException
@@ -331,32 +331,20 @@ __attribute__((swift_name("RestClientException")))
 - (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 - (instancetype)initWithCause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @property (readonly) NSString *errorMessage __attribute__((swift_name("errorMessage")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("RestClientException.GenericError")))
 @interface FCSDKRestClientExceptionGenericError : FCSDKRestClientException
 - (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("RestClientException.HttpError")))
 @interface FCSDKRestClientExceptionHttpError : FCSDKRestClientException
 - (instancetype)initWithStatusCode:(int32_t)statusCode errorMessage:(NSString *)errorMessage __attribute__((swift_name("init(statusCode:errorMessage:)"))) __attribute__((objc_designated_initializer));
 @property (readonly) int32_t statusCode __attribute__((swift_name("statusCode")));
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("RestClientException.InternalServerError")))
-@interface FCSDKRestClientExceptionInternalServerError : FCSDKRestClientException
-- (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer));
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("RestClientException.RedirectionError")))
-@interface FCSDKRestClientExceptionRedirectionError : FCSDKRestClientException
-- (instancetype)initWithErrorMessage:(NSString *)errorMessage __attribute__((swift_name("init(errorMessage:)"))) __attribute__((objc_designated_initializer));
-@end;
+@end
 
 __attribute__((swift_name("TeavaroLocalStorage")))
 @protocol FCSDKTeavaroLocalStorage
@@ -368,7 +356,7 @@ __attribute__((swift_name("TeavaroLocalStorage")))
 - (void)removeValueKey:(NSString *)key __attribute__((swift_name("removeValue(key:)")));
 - (void)saveKey:(NSString *)key value:(BOOL)value __attribute__((swift_name("save(key:value:)")));
 - (void)saveKey:(NSString *)key value_:(NSString *)value __attribute__((swift_name("save(key:value_:)")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FCOptions")))
@@ -380,7 +368,7 @@ __attribute__((swift_name("FCOptions")))
 - (NSUInteger)hash __attribute__((swift_name("hash()")));
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) BOOL enableLogging __attribute__((swift_name("enableLogging")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FCUser")))
@@ -394,7 +382,7 @@ __attribute__((swift_name("FCUser")))
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString *userId __attribute__((swift_name("userId")));
 @property (readonly) NSString *userIdType __attribute__((swift_name("userIdType")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("IdcData")))
@@ -408,23 +396,11 @@ __attribute__((swift_name("IdcData")))
 - (NSString *)description __attribute__((swift_name("description()")));
 @property (readonly) NSString * _Nullable atid __attribute__((swift_name("atid")));
 @property (readonly) NSString * _Nullable mtid __attribute__((swift_name("mtid")));
-@end;
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("BasicCdpPermission")))
-@interface FCSDKBasicCdpPermission : FCSDKBase
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-+ (instancetype)basicCdpPermission __attribute__((swift_name("init()")));
-@property (class, readonly, getter=shared) FCSDKBasicCdpPermission *shared __attribute__((swift_name("shared")));
-@property (readonly) NSString *LI_NBA __attribute__((swift_name("LI_NBA")));
-@property (readonly) NSString *LI_OM __attribute__((swift_name("LI_OM")));
-@property (readonly) NSString *LI_OPT __attribute__((swift_name("LI_OPT")));
-@end;
+@end
 
 @interface FCSDKKotlinException (Extensions)
 - (NSError *)createNSErrorFromKotlinException __attribute__((swift_name("createNSErrorFromKotlinException()")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinByteArray")))
@@ -437,17 +413,17 @@ __attribute__((swift_name("KotlinByteArray")))
 - (FCSDKKotlinByteIterator *)iterator __attribute__((swift_name("iterator()")));
 - (void)setIndex:(int32_t)index value:(int8_t)value __attribute__((swift_name("set(index:value:)")));
 @property (readonly) int32_t size __attribute__((swift_name("size")));
-@end;
+@end
 
 @interface FCSDKKotlinByteArray (Extensions)
 - (NSString *)toHexString __attribute__((swift_name("toHexString()")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("MapKt")))
 @interface FCSDKMapKt : FCSDKBase
 + (id _Nullable)getOrNull:(NSDictionary<NSString *, id> *)receiver key:(NSString *)key ignoreKeyCase:(BOOL)ignoreKeyCase __attribute__((swift_name("getOrNull(_:key:ignoreKeyCase:)")));
-@end;
+@end
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinArray")))
@@ -459,14 +435,14 @@ __attribute__((swift_name("KotlinArray")))
 - (id<FCSDKKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
 - (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
 @property (readonly) int32_t size __attribute__((swift_name("size")));
-@end;
+@end
 
 __attribute__((swift_name("KotlinIterator")))
 @protocol FCSDKKotlinIterator
 @required
 - (BOOL)hasNext __attribute__((swift_name("hasNext()")));
 - (id _Nullable)next __attribute__((swift_name("next()")));
-@end;
+@end
 
 __attribute__((swift_name("KotlinByteIterator")))
 @interface FCSDKKotlinByteIterator : FCSDKBase <FCSDKKotlinIterator>
@@ -474,7 +450,7 @@ __attribute__((swift_name("KotlinByteIterator")))
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (FCSDKByte *)next __attribute__((swift_name("next()")));
 - (int8_t)nextByte __attribute__((swift_name("nextByte()")));
-@end;
+@end
 
 #pragma pop_macro("_Nullable_result")
 #pragma clang diagnostic pop
