@@ -173,11 +173,11 @@ __attribute__((swift_name("CdpService")))
 - (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback_:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback_:)")));
 - (void)startServiceFcUser:(FCSDKFCUser *)fcUser __attribute__((swift_name("startService(fcUser:)")));
 - (void)startServiceFcUser:(FCSDKFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:dataCallback:errorCallback:)")));
-- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(fcUser:notificationsVersion:)")));
-- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:notificationsVersion:dataCallback:errorCallback:)")));
-- (void)startServiceNotificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(notificationsVersion:)")));
-- (void)startServiceNotificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsVersion:dataCallback:errorCallback:)")));
-- (void)updatePermissionsPermissions:(FCSDKPermissionsMap *)permissions notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:)")));
+- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion __attribute__((swift_name("startService(notificationsName:notificationsVersion:)")));
+- (void)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)updatePermissionsPermissions:(FCSDKPermissionsMap *)permissions notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
 @end
 
 __attribute__((swift_name("FunnelConnect")))
