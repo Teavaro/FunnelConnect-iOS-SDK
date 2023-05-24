@@ -2,20 +2,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "FunnelConnectSDK",
+    name: "utiq",
     platforms: [
         .iOS(.v12)
     ],
     products: [
         .library(
-            name: "FunnelConnectSDK",
-            targets: ["FunnelConnectSDK"]
+            name: "utiq",
+            targets: ["utiq"]
         ),
     ],
     targets: [
         .binaryTarget(
-            name: "FunnelConnectSDK",
-            path: "./FunnelConnectSDK.xcframework"
+            name: "utiq",
+            path: "./utiq.xcframework"
         ),
     ]
 )
