@@ -2,9 +2,9 @@
 
 
 <p align="center">
-<a href="https://cocoapods.org/pods/FunnelConnectSDK"><img src="https://img.shields.io/cocoapods/p/FunnelConnectSDK.svg?style=flat"></a>
-<a href="https://cocoapods.org/pods/FunnelConnectSDK"><img src="https://img.shields.io/badge/Swift-5.3-F16D39.svg?style=flat"></a>
-<a href="https://raw.githubusercontent.com/Teavaro/FunnelConnect-iOS-SDK/main/LICENSE"><img src="https://img.shields.io/cocoapods/l/FunnelConnectSDK.svg?style=flat"></a>
+<a href="https://cocoapods.org/pods/FunnelConnect-iOS-SDK"><img src="https://img.shields.io/cocoapods/p/FunnelConnect-iOS-SDK.svg?style=flat"></a>
+<a href="https://cocoapods.org/pods/FunnelConnect-iOS-SDK"><img src="https://img.shields.io/badge/Swift-5.3-F16D39.svg?style=flat"></a>
+<a href="https://raw.githubusercontent.com/Teavaro/FunnelConnect-iOS-SDK/main/LICENSE"><img src="https://img.shields.io/cocoapods/l/FunnelConnect-iOS-SDK.svg?style=flat"></a>
 <a href="https://docs.teavaro.com/documentation/ios/services/getting-started/#2-cocoapods"><img src="https://img.shields.io/cocoapods/v/FunnelConnectSDK.svg?style=flat-square&color=blue"></a>
 <a href="https://docs.teavaro.com/documentation/ios/services/getting-started/#1-swift-package-manager-spm"><img src="https://img.shields.io/cocoapods/v/FunnelConnectSDK.svg?style=flat-square&color=brightgreen&label=Swift Package Manager"></a>
 </p>
