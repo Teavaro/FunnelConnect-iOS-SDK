@@ -262,7 +262,13 @@ __attribute__((swift_name("FunnelConnectSDK")))
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
-- (NSString * _Nullable)getUserIdAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUserId()"))) __attribute__((swift_error(nonnull_error)));
+- (NSString * _Nullable)getUserIdByKeyKey:(NSString *)key error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUserIdByKey(key:)"))) __attribute__((swift_error(nonnull_error)));
+
+/**
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (NSArray<FCSDKFCUser *> * _Nullable)getUsersAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUsers()")));
 - (void)initializeSdkToken:(NSString *)sdkToken __attribute__((swift_name("initialize(sdkToken:)")));
 - (void)initializeSdkToken:(NSString *)sdkToken options:(FCSDKFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
 - (BOOL)isInitialize __attribute__((swift_name("isInitialize()")));
@@ -292,6 +298,13 @@ __attribute__((swift_name("FunnelConnectSDK")))
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
+- (BOOL)setUsersFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("setUsers(fcUsers:)")));
+- (void)setUsersFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("setUsers(fcUsers:dataCallback:errorCallback:)")));
+
+/**
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
 - (BOOL)startServiceAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService()")));
 - (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
 
@@ -315,6 +328,14 @@ __attribute__((swift_name("FunnelConnectSDK")))
 */
 - (BOOL)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(notificationsName:notificationsVersion:)")));
 - (void)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+
+/**
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUsers:)")));
+- (void)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:dataCallback:errorCallback:)")));
+- (void)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
 @end
 
