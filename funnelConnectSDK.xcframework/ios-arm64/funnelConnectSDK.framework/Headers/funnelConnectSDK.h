@@ -336,6 +336,8 @@ __attribute__((swift_name("FunnelConnectSDK")))
 - (BOOL)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUsers:)")));
 - (void)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:dataCallback:errorCallback:)")));
 - (void)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:dataCallback:errorCallback:)")));
+- (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
 @end
 
