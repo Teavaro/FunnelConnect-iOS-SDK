@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FCSDKBasePermissions, NSDictionary, FCSDKFCOptions, FCSDKFCUserCompanion, FCSDKFCUser, NSError, FCSDKFunnelConnectSDK, FCSDKPermissions, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinx_serialization_coreSerializersModule, FCSDKKotlinx_serialization_coreSerialKind, FCSDKKotlinNothing;
+@class FCSDKFCOptions, FCSDKFCUserCompanion, FCSDKFCUser, NSError, FCSDKFunnelConnectSDK, FCSDKPermissions, FCSDKBasePermissions, NSDictionary, FCSDKKotlinThrowable, FCSDKKotlinArray<T>, FCSDKKotlinx_serialization_coreSerializersModule, FCSDKKotlinx_serialization_coreSerialKind, FCSDKKotlinNothing;
 
 @protocol FCSDKKotlinx_serialization_coreKSerializer, FCSDKCoreSDKMainClassUtils, FCSDKKotlinx_serialization_coreEncoder, FCSDKKotlinx_serialization_coreSerialDescriptor, FCSDKKotlinx_serialization_coreSerializationStrategy, FCSDKKotlinx_serialization_coreDecoder, FCSDKKotlinx_serialization_coreDeserializationStrategy, FCSDKKotlinx_serialization_coreCompositeEncoder, FCSDKKotlinAnnotation, FCSDKKotlinx_serialization_coreCompositeDecoder, FCSDKKotlinIterator, FCSDKKotlinx_serialization_coreSerializersModuleCollector, FCSDKKotlinKClass, FCSDKKotlinKDeclarationContainer, FCSDKKotlinKAnnotatedElement, FCSDKKotlinKClassifier;
 
@@ -142,30 +142,6 @@ __attribute__((swift_name("KotlinBoolean")))
 @interface FCSDKBoolean : FCSDKNumber
 - (instancetype)initWithBool:(BOOL)value;
 + (instancetype)numberWithBool:(BOOL)value;
-@end
-
-__attribute__((swift_name("BasePermissions")))
-@interface FCSDKBasePermissions : FCSDKBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (instancetype)initWithKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("init(key:accepted:)"))) __attribute__((objc_designated_initializer));
-- (void)addPermissionKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("addPermission(key:accepted:)")));
-- (void)clear __attribute__((swift_name("clear()")));
-- (BOOL)containsKeyKey:(NSString *)key __attribute__((swift_name("containsKey(key:)")));
-- (BOOL)containsValueValue:(BOOL)value __attribute__((swift_name("containsValue(value:)")));
-- (BOOL)getPermissionKey:(NSString *)key __attribute__((swift_name("getPermission(key:)")));
-- (BOOL)isEmpty __attribute__((swift_name("isEmpty()")));
-- (void)removeKey:(NSString *)key __attribute__((swift_name("remove(key:)")));
-@end
-
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("Permissions")))
-@interface FCSDKPermissions : FCSDKBasePermissions
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (instancetype)initWithKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("init(key:accepted:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
-- (NSDictionary *)asDictionary __attribute__((swift_name("asDictionary()")));
-- (NSArray<NSString *> *)getAllKeys __attribute__((swift_name("getAllKeys()")));
 @end
 
 __attribute__((objc_subclassing_restricted))
@@ -306,13 +282,25 @@ __attribute__((swift_name("FunnelConnectSDK")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)startServiceAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService()")));
-- (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
 
 /**
  * @note This method converts instances of Exception to errors.
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)startServiceFcUser:(FCSDKFCUser *)fcUser error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:)")));
+
+/**
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUsers:)")));
+- (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
+
+/**
+ * @note This method converts instances of Exception to errors.
+ * Other uncaught Kotlin exceptions are fatal.
+*/
+- (BOOL)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(notificationsName:notificationsVersion:)")));
 - (void)startServiceFcUser:(FCSDKFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:dataCallback:errorCallback:)")));
 
 /**
@@ -320,26 +308,38 @@ __attribute__((swift_name("FunnelConnectSDK")))
  * Other uncaught Kotlin exceptions are fatal.
 */
 - (BOOL)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:)")));
-- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
-
-/**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (BOOL)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(notificationsName:notificationsVersion:)")));
-- (void)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
-
-/**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
-*/
-- (BOOL)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUsers:)")));
 - (void)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:dataCallback:errorCallback:)")));
+- (void)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)startServiceFcUser:(FCSDKFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
 - (void)startServiceFcUsers:(NSArray<FCSDKFCUser *> *)fcUsers notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
-- (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:dataCallback:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:errorCallback:)")));
-- (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:dataCallback:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsName:notificationsVersion:errorCallback:)")));
+- (void)updatePermissionsPermissions:(FCSDKPermissions *)permissions notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+@end
+
+__attribute__((swift_name("BasePermissions")))
+@interface FCSDKBasePermissions : FCSDKBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("init(key:accepted:)"))) __attribute__((objc_designated_initializer));
+- (void)addPermissionKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("addPermission(key:accepted:)")));
+- (void)clear __attribute__((swift_name("clear()")));
+- (BOOL)containsKeyKey:(NSString *)key __attribute__((swift_name("containsKey(key:)")));
+- (BOOL)containsValueValue:(BOOL)value __attribute__((swift_name("containsValue(value:)")));
+- (BOOL)getPermissionKey:(NSString *)key __attribute__((swift_name("getPermission(key:)")));
+- (BOOL)isEmpty __attribute__((swift_name("isEmpty()")));
+- (void)removeKey:(NSString *)key __attribute__((swift_name("remove(key:)")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("Permissions")))
+@interface FCSDKPermissions : FCSDKBasePermissions
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithKey:(NSString *)key accepted:(BOOL)accepted __attribute__((swift_name("init(key:accepted:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (NSDictionary *)asDictionary __attribute__((swift_name("asDictionary()")));
+- (NSArray<NSString *> *)getAllKeys __attribute__((swift_name("getAllKeys()")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreSerializationStrategy")))
@@ -363,10 +363,10 @@ __attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
 
 __attribute__((swift_name("KotlinThrowable")))
 @interface FCSDKKotlinThrowable : FCSDKBase
-- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithCause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 
 /**
@@ -386,8 +386,8 @@ __attribute__((swift_name("KotlinException")))
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 - (instancetype)initWithCause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FCSDKKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
