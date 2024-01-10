@@ -1,5 +1,5 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'funnelConnectSDK'
+    spec.name                     = 'FunnelConnectSDK'
     spec.version                  = ENV['LIB_VERSION'] || '0.1.14' #fallback to major version
     spec.summary                  = 'funnelConnectSDK for iOS'
     spec.homepage                 = 'https://github.com/Teavaro/FunnelConnect-iOS-SDK'
