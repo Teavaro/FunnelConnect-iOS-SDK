@@ -6,29 +6,13 @@
 	<array>
 		<dict>
 			<key>BinaryPath</key>
-			<string>funnelConnectSDK.framework/FunnelConnectSDK</string>
-			<key>DebugSymbolsPath</key>
-			<string>dSYMs</string>
-			<key>LibraryIdentifier</key>
-			<string>ios-arm64</string>
-			<key>LibraryPath</key>
-			<string>FunnelConnectSDK.framework</string>
-			<key>SupportedArchitectures</key>
-			<array>
-				<string>arm64</string>
-			</array>
-			<key>SupportedPlatform</key>
-			<string>ios</string>
-		</dict>
-		<dict>
-			<key>BinaryPath</key>
-			<string>funnelConnectSDK.framework/FunnelConnectSDK</string>
+			<string>funnelConnectSDK.framework/funnelConnectSDK</string>
 			<key>DebugSymbolsPath</key>
 			<string>dSYMs</string>
 			<key>LibraryIdentifier</key>
 			<string>ios-x86_64-simulator</string>
 			<key>LibraryPath</key>
-			<string>FunnelConnectSDK.framework</string>
+			<string>funnelConnectSDK.framework</string>
 			<key>SupportedArchitectures</key>
 			<array>
 				<string>x86_64</string>
@@ -37,6 +21,22 @@
 			<string>ios</string>
 			<key>SupportedPlatformVariant</key>
 			<string>simulator</string>
+		</dict>
+		<dict>
+			<key>BinaryPath</key>
+			<string>funnelConnectSDK.framework/funnelConnectSDK</string>
+			<key>DebugSymbolsPath</key>
+			<string>dSYMs</string>
+			<key>LibraryIdentifier</key>
+			<string>ios-arm64</string>
+			<key>LibraryPath</key>
+			<string>funnelConnectSDK.framework</string>
+			<key>SupportedArchitectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>SupportedPlatform</key>
+			<string>ios</string>
 		</dict>
 	</array>
 	<key>CFBundlePackageType</key>

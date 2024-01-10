@@ -1,5 +1,5 @@
-framework module FunnelConnectSDK {
-    umbrella header "FunnelConnectSDK.h"
+framework module funnelConnectSDK {
+    umbrella header "funnelConnectSDK.h"
 
     export *
     module * { export * }
