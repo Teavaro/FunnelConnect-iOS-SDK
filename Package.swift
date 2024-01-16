@@ -2,20 +2,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "FunnelConnectSDK",
+    name: "FunnelConnect",
     platforms: [
         .iOS(.v12)
     ],
     products: [
         .library(
-            name: "FunnelConnectSDK",
-            targets: ["FunnelConnectSDK"]
+            name: "FunnelConnect",
+            targets: ["FunnelConnect"]
         ),
     ],
     targets: [
         .binaryTarget(
-            name: "FunnelConnectSDK",
-            path: "./FunnelConnectSDK.xcframework"
+            name: "FunnelConnect",
+            path: "./FunnelConnect.xcframework"
         ),
     ]
 )
