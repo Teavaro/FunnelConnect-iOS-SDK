@@ -6,9 +6,9 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FunnelConnectFCOptions, FunnelConnectFCUserCompanion, FunnelConnectFCUser, NSError, FunnelConnectFunnelConnectSDK, FunnelConnectPermissions, FunnelConnectBasePermissions, NSDictionary, FunnelConnectKotlinThrowable, FunnelConnectKotlinArray<T>, FunnelConnectKotlinx_serialization_coreSerializersModule, FunnelConnectKotlinx_serialization_coreSerialKind, FunnelConnectKotlinNothing;
+@class FunnelConnectFCOptions, FunnelConnectFCUserCompanion, FunnelConnectFCUser, FunnelConnectKotlinThrowable, FunnelConnectKotlinArray<T>, FunnelConnectCoreBaseError, FunnelConnectIdentificationNotEnabledException, FunnelConnectInfoNotEnabledException, FunnelConnectTrackingNotEnabledException, NSError, FunnelConnectFunnelConnectSDK, FunnelConnectPermissions, FunnelConnectBasePermissions, NSDictionary, FunnelConnectKotlinx_serialization_coreSerializersModule, FunnelConnectKotlinx_serialization_coreSerialKind, FunnelConnectKotlinNothing;
 
-@protocol FunnelConnectKotlinx_serialization_coreKSerializer, FunnelConnectCoreSDKMainClassUtils, FunnelConnectKotlinx_serialization_coreEncoder, FunnelConnectKotlinx_serialization_coreSerialDescriptor, FunnelConnectKotlinx_serialization_coreSerializationStrategy, FunnelConnectKotlinx_serialization_coreDecoder, FunnelConnectKotlinx_serialization_coreDeserializationStrategy, FunnelConnectKotlinx_serialization_coreCompositeEncoder, FunnelConnectKotlinAnnotation, FunnelConnectKotlinx_serialization_coreCompositeDecoder, FunnelConnectKotlinIterator, FunnelConnectKotlinx_serialization_coreSerializersModuleCollector, FunnelConnectKotlinKClass, FunnelConnectKotlinKDeclarationContainer, FunnelConnectKotlinKAnnotatedElement, FunnelConnectKotlinKClassifier;
+@protocol FunnelConnectKotlinx_serialization_coreKSerializer, FunnelConnectCoreSDKMainClassUtils, FunnelConnectKotlinx_serialization_coreEncoder, FunnelConnectKotlinx_serialization_coreSerialDescriptor, FunnelConnectKotlinx_serialization_coreSerializationStrategy, FunnelConnectKotlinx_serialization_coreDecoder, FunnelConnectKotlinx_serialization_coreDeserializationStrategy, FunnelConnectKotlinIterator, FunnelConnectKotlinx_serialization_coreCompositeEncoder, FunnelConnectKotlinAnnotation, FunnelConnectKotlinx_serialization_coreCompositeDecoder, FunnelConnectKotlinx_serialization_coreSerializersModuleCollector, FunnelConnectKotlinKClass, FunnelConnectKotlinKDeclarationContainer, FunnelConnectKotlinKAnnotatedElement, FunnelConnectKotlinKClassifier;
 
 NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic push
@@ -181,6 +181,77 @@ __attribute__((swift_name("FCUser.Companion")))
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) FunnelConnectFCUserCompanion *shared __attribute__((swift_name("shared")));
 - (id<FunnelConnectKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+__attribute__((swift_name("KotlinThrowable")))
+@interface FunnelConnectKotlinThrowable : FunnelConnectBase
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithCause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
+
+/**
+ * @note annotations
+ *   kotlin.experimental.ExperimentalNativeApi
+*/
+- (FunnelConnectKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
+- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) FunnelConnectKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
+@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
+- (NSError *)asError __attribute__((swift_name("asError()")));
+@end
+
+__attribute__((swift_name("CoreBaseError")))
+@interface FunnelConnectCoreBaseError : FunnelConnectKotlinThrowable
+- (instancetype)initWithMessage:(NSString *)message code:(int64_t)code __attribute__((swift_name("init(message:code:)"))) __attribute__((objc_designated_initializer));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)new __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithCause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
+@property (readonly) int64_t code __attribute__((swift_name("code")));
+@property (readonly) NSString *message __attribute__((swift_name("message")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("IdentificationNotEnabledException")))
+@interface FunnelConnectIdentificationNotEnabledException : FunnelConnectCoreBaseError
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString *)message code:(int64_t)code __attribute__((swift_name("init(message:code:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)identificationNotEnabledException __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) FunnelConnectIdentificationNotEnabledException *shared __attribute__((swift_name("shared")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("InfoNotEnabledException")))
+@interface FunnelConnectInfoNotEnabledException : FunnelConnectCoreBaseError
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString *)message code:(int64_t)code __attribute__((swift_name("init(message:code:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)infoNotEnabledException __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) FunnelConnectInfoNotEnabledException *shared __attribute__((swift_name("shared")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("TrackingNotEnabledException")))
+@interface FunnelConnectTrackingNotEnabledException : FunnelConnectCoreBaseError
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (instancetype)initWithMessage:(NSString *)message code:(int64_t)code __attribute__((swift_name("init(message:code:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
++ (instancetype)trackingNotEnabledException __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) FunnelConnectTrackingNotEnabledException *shared __attribute__((swift_name("shared")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
 @end
 
 __attribute__((swift_name("CoreSDKMainClassUtils")))
@@ -361,24 +432,16 @@ __attribute__((swift_name("Kotlinx_serialization_coreKSerializer")))
 @required
 @end
 
-__attribute__((swift_name("KotlinThrowable")))
-@interface FunnelConnectKotlinThrowable : FunnelConnectBase
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithCause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
-
-/**
- * @note annotations
- *   kotlin.experimental.ExperimentalNativeApi
-*/
-- (FunnelConnectKotlinArray<NSString *> *)getStackTrace __attribute__((swift_name("getStackTrace()")));
-- (void)printStackTrace __attribute__((swift_name("printStackTrace()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) FunnelConnectKotlinThrowable * _Nullable cause __attribute__((swift_name("cause")));
-@property (readonly) NSString * _Nullable message __attribute__((swift_name("message")));
-- (NSError *)asError __attribute__((swift_name("asError()")));
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("KotlinArray")))
+@interface FunnelConnectKotlinArray<T> : FunnelConnectBase
++ (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(FunnelConnectInt *))init __attribute__((swift_name("init(size:init:)")));
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
+- (T _Nullable)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
+- (id<FunnelConnectKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
+- (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
+@property (readonly) int32_t size __attribute__((swift_name("size")));
 @end
 
 __attribute__((swift_name("KotlinException")))
@@ -531,16 +594,11 @@ __attribute__((swift_name("Kotlinx_serialization_coreDecoder")))
 @property (readonly) FunnelConnectKotlinx_serialization_coreSerializersModule *serializersModule __attribute__((swift_name("serializersModule")));
 @end
 
-__attribute__((objc_subclassing_restricted))
-__attribute__((swift_name("KotlinArray")))
-@interface FunnelConnectKotlinArray<T> : FunnelConnectBase
-+ (instancetype)arrayWithSize:(int32_t)size init:(T _Nullable (^)(FunnelConnectInt *))init __attribute__((swift_name("init(size:init:)")));
-+ (instancetype)alloc __attribute__((unavailable));
-+ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
-- (T _Nullable)getIndex:(int32_t)index __attribute__((swift_name("get(index:)")));
-- (id<FunnelConnectKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
-- (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
-@property (readonly) int32_t size __attribute__((swift_name("size")));
+__attribute__((swift_name("KotlinIterator")))
+@protocol FunnelConnectKotlinIterator
+@required
+- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
+- (id _Nullable)next __attribute__((swift_name("next()")));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreCompositeEncoder")))
@@ -652,13 +710,6 @@ __attribute__((swift_name("Kotlinx_serialization_coreCompositeDecoder")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("KotlinNothing")))
 @interface FunnelConnectKotlinNothing : FunnelConnectBase
-@end
-
-__attribute__((swift_name("KotlinIterator")))
-@protocol FunnelConnectKotlinIterator
-@required
-- (BOOL)hasNext __attribute__((swift_name("hasNext()")));
-- (id _Nullable)next __attribute__((swift_name("next()")));
 @end
 
 
