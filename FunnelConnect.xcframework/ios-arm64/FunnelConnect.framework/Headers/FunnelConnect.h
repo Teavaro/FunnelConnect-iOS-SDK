@@ -259,14 +259,12 @@ __attribute__((swift_name("CoreSDKMainClassUtils")))
 @required
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (id _Nullable)tryOrReThrowAndReturnError:(NSError * _Nullable * _Nullable)error function:(id _Nullable (^)(void))function __attribute__((swift_name("tryOrReThrow(function:)"))) __attribute__((swift_error(nonnull_error)));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)tryOrReThrowAndReturnError:(NSError * _Nullable * _Nullable)error function_:(void (^)(void))function __attribute__((swift_name("tryOrReThrow(function_:)")));
 - (void)tryOrThrowFunction:(void (^)(void))function errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("tryOrThrow(function:errorCallback:)")));
@@ -281,102 +279,87 @@ __attribute__((swift_name("FunnelConnectSDK")))
 @property (class, readonly, getter=shared) FunnelConnectFunnelConnectSDK *shared __attribute__((swift_name("shared")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)clearCookiesAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearCookies()")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)clearDataAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("clearData()")));
 - (void)didInitializeWithResultSuccess:(void (^)(void))success failure:(void (^)(NSError *))failure __attribute__((swift_name("didInitializeWithResult(success:failure:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (FunnelConnectPermissions * _Nullable)getPermissionsAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getPermissions()")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (NSString * _Nullable)getUMIDAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUMID()"))) __attribute__((swift_error(nonnull_error)));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (NSString * _Nullable)getUserIdByKeyKey:(NSString *)key error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUserIdByKey(key:)"))) __attribute__((swift_error(nonnull_error)));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (NSArray<FunnelConnectFCUser *> * _Nullable)getUsersAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUsers()")));
-- (void)initializeSdkToken:(NSString *)sdkToken __attribute__((swift_name("initialize(sdkToken:)")));
-- (void)initializeSdkToken:(NSString *)sdkToken options:(FunnelConnectFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
+- (void)initializeSdkToken:(NSString *)sdkToken plistFilePath:(NSString *)plistFilePath __attribute__((swift_name("initialize(sdkToken:plistFilePath:)")));
+- (void)initializeSdkToken:(NSString *)sdkToken plistFilePath:(NSString *)plistFilePath options:(FunnelConnectFCOptions *)options __attribute__((swift_name("initialize(sdkToken:plistFilePath:options:)")));
 - (BOOL)isInitialize __attribute__((swift_name("isInitialize()")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)logEventKey:(NSString *)key value:(NSString *)value error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("logEvent(key:value:)")));
 - (void)logEventKey:(NSString *)key value:(NSString *)value successCallback:(void (^)(void))successCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("logEvent(key:value:successCallback:errorCallback:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("logEvents(events:)")));
 - (void)logEventsEvents:(NSDictionary<NSString *, NSString *> *)events successCallback:(void (^)(void))successCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("logEvents(events:successCallback:errorCallback:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)setUserFcUser:(FunnelConnectFCUser *)fcUser error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("setUser(fcUser:)")));
 - (void)setUserFcUser:(FunnelConnectFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("setUser(fcUser:dataCallback:errorCallback:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)setUsersFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("setUsers(fcUsers:)")));
 - (void)setUsersFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("setUsers(fcUsers:dataCallback:errorCallback:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)startServiceAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService()")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)startServiceFcUser:(FunnelConnectFCUser *)fcUser error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUsers:)")));
 - (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(notificationsName:notificationsVersion:)")));
 - (void)startServiceFcUser:(FunnelConnectFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:dataCallback:errorCallback:)")));
 
 /**
- * @note This method converts instances of Exception to errors.
- * Other uncaught Kotlin exceptions are fatal.
+ * @note This method converts all Kotlin exceptions to errors.
 */
 - (BOOL)startServiceFcUser:(FunnelConnectFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:)")));
 - (void)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:dataCallback:errorCallback:)")));
@@ -442,15 +425,6 @@ __attribute__((swift_name("KotlinArray")))
 - (id<FunnelConnectKotlinIterator>)iterator __attribute__((swift_name("iterator()")));
 - (void)setIndex:(int32_t)index value:(T _Nullable)value __attribute__((swift_name("set(index:value:)")));
 @property (readonly) int32_t size __attribute__((swift_name("size")));
-@end
-
-__attribute__((swift_name("KotlinException")))
-@interface FunnelConnectKotlinException : FunnelConnectKotlinThrowable
-- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
-+ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
-- (instancetype)initWithMessage:(NSString * _Nullable)message __attribute__((swift_name("init(message:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithCause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(cause:)"))) __attribute__((objc_designated_initializer));
-- (instancetype)initWithMessage:(NSString * _Nullable)message cause:(FunnelConnectKotlinThrowable * _Nullable)cause __attribute__((swift_name("init(message:cause:)"))) __attribute__((objc_designated_initializer));
 @end
 
 __attribute__((swift_name("Kotlinx_serialization_coreEncoder")))
