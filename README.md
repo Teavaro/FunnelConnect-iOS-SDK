@@ -1,10 +1,12 @@
 <h1 align ="center"><b style='color:#2270FF'>FunnelConnect iOS SDK</b></h1>
+
+
 <p align="center">
 <a href="https://cocoapods.org/pods/FunnelConnect"><img src="https://img.shields.io/cocoapods/p/FunnelConnect.svg?style=flat"></a>
-<a href="https://cocoapods.org/pods/FunnelConnect"><img src="https://img.shields.io/badge/Swift-5.9-F16D39.svg?style=flat"></a>
-<a href="https://raw.githubusercontent.com/Teavaro/FunnelConnect-iOS-SDK/main/LICENSE"><img src="https://img.shields.io/cocoapods/l/FunnelConnect.svg?style=flat"></a>
-<a href="https://docs.teavaro.com/mobile-sdk/ios/getting-started/#2-cocoapods"><img src="https://img.shields.io/cocoapods/v/FunnelConnect.svg?style=flat-square&color=blue"></a>
-<a href="https://docs.teavaro.com/mobile-sdk/ios/getting-started/#1-swift-package-manager-spm"><img src="https://img.shields.io/cocoapods/v/FunnelConnect.svg?style=flat-square&color=brightgreen&label=Swift Package Manager"></a>
+<a href="https://cocoapods.org/pods/FunnelConnect"><img src="https://img.shields.io/badge/Swift-5.3-F16D39.svg?style=flat"></a>
+<a href="https://raw.githubusercontent.com/Teavaro/FunnelConnect/main/LICENSE"><img src="https://img.shields.io/cocoapods/l/FunnelConnect.svg?style=flat"></a>
+<a href="https://docs.teavaro.com/documentation/ios/services/getting-started/#2-cocoapods"><img src="https://img.shields.io/cocoapods/v/FunnelConnect.svg?style=flat-square&color=blue"></a>
+<a href="https://docs.teavaro.com/documentation/ios/services/getting-started/#1-swift-package-manager-spm"><img src="https://img.shields.io/cocoapods/v/FunnelConnect.svg?style=flat-square&color=brightgreen&label=Swift Package Manager"></a>
 </p>
 
 
@@ -21,7 +23,7 @@
 FunnelConnect SDK reduces the time and the overhead required to integrate with FunnelConnect APIs and provides direct access to FunnelConnect services.
 
 ## Installation and integration:
-For installation and integration please check the SDK [documentation](https://docs.teavaro.com/mobile-sdk/ios/getting-started/).
+For installation and integration please check the SDK [documentation](https://docs.teavaro.com/documentation/).
 
 
 ## Support and bug reporting:
