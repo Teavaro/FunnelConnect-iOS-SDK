@@ -1,4 +1,4 @@
-framework module FunnelConnect {
+framework module "FunnelConnect" {
     umbrella header "FunnelConnect.h"
 
     export *
