@@ -147,12 +147,10 @@ __attribute__((swift_name("KotlinBoolean")))
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("FCOptions")))
 @interface FunnelConnectFCOptions : FunnelConnectBase
-- (instancetype)initWithEnableLogging:(BOOL)enableLogging __attribute__((swift_name("init(enableLogging:)"))) __attribute__((objc_designated_initializer));
-- (FunnelConnectFCOptions *)doCopyEnableLogging:(BOOL)enableLogging __attribute__((swift_name("doCopy(enableLogging:)")));
-- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
-- (NSUInteger)hash __attribute__((swift_name("hash()")));
-- (NSString *)description __attribute__((swift_name("description()")));
-@property (readonly) BOOL enableLogging __attribute__((swift_name("enableLogging")));
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (FunnelConnectFCOptions *)enableLogging __attribute__((swift_name("enableLogging()")));
+- (FunnelConnectFCOptions *)setFallBackConfigJsonJson:(NSString *)json __attribute__((swift_name("setFallBackConfigJson(json:)")));
 @end
 
 
@@ -308,8 +306,8 @@ __attribute__((swift_name("FunnelConnectSDK")))
  * @note This method converts all Kotlin exceptions to errors.
 */
 - (NSArray<FunnelConnectFCUser *> * _Nullable)getUsersAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUsers()")));
-- (void)initializeSdkToken:(NSString *)sdkToken plistFilePath:(NSString *)plistFilePath __attribute__((swift_name("initialize(sdkToken:plistFilePath:)")));
-- (void)initializeSdkToken:(NSString *)sdkToken plistFilePath:(NSString *)plistFilePath options:(FunnelConnectFCOptions *)options __attribute__((swift_name("initialize(sdkToken:plistFilePath:options:)")));
+- (void)initializeSdkToken:(NSString *)sdkToken __attribute__((swift_name("initialize(sdkToken:)")));
+- (void)initializeSdkToken:(NSString *)sdkToken options:(FunnelConnectFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
 - (BOOL)isInitialize __attribute__((swift_name("isInitialize()")));
 
 /**
