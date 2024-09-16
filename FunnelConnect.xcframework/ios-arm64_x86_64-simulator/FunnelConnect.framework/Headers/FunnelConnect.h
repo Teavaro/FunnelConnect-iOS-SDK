@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FunnelConnectFCOptions, FunnelConnectFCUserCompanion, FunnelConnectFCUser, FunnelConnectKotlinThrowable, FunnelConnectKotlinArray<T>, FunnelConnectCoreBaseError, FunnelConnectIdentificationNotEnabledException, FunnelConnectInfoNotEnabledException, FunnelConnectTrackingNotEnabledException, NSError, FunnelConnectFunnelConnectSDK, FunnelConnectPermissions, FunnelConnectBasePermissions, NSDictionary, FunnelConnectKotlinx_serialization_coreSerializersModule, FunnelConnectKotlinx_serialization_coreSerialKind, FunnelConnectKotlinNothing;
+@class FunnelConnectFCOptions, FunnelConnectFCUserCompanion, FunnelConnectFCUser, FunnelConnectPassQueryCompanion, FunnelConnectPassQuery, FunnelConnectKotlinThrowable, FunnelConnectKotlinArray<T>, FunnelConnectCoreBaseError, FunnelConnectIdentificationNotEnabledException, FunnelConnectInfoNotEnabledException, FunnelConnectTrackingNotEnabledException, NSError, FunnelConnectFunnelConnectSDK, FunnelConnectPermissions, FunnelConnectBasePermissions, NSDictionary, FunnelConnectKotlinx_serialization_coreSerializersModule, FunnelConnectKotlinx_serialization_coreSerialKind, FunnelConnectKotlinNothing;
 
 @protocol FunnelConnectKotlinx_serialization_coreKSerializer, FunnelConnectCoreSDKMainClassUtils, FunnelConnectKotlinx_serialization_coreEncoder, FunnelConnectKotlinx_serialization_coreSerialDescriptor, FunnelConnectKotlinx_serialization_coreSerializationStrategy, FunnelConnectKotlinx_serialization_coreDecoder, FunnelConnectKotlinx_serialization_coreDeserializationStrategy, FunnelConnectKotlinIterator, FunnelConnectKotlinx_serialization_coreCompositeEncoder, FunnelConnectKotlinAnnotation, FunnelConnectKotlinx_serialization_coreCompositeDecoder, FunnelConnectKotlinx_serialization_coreSerializersModuleCollector, FunnelConnectKotlinKClass, FunnelConnectKotlinKDeclarationContainer, FunnelConnectKotlinKAnnotatedElement, FunnelConnectKotlinKClassifier;
 
@@ -181,6 +181,34 @@ __attribute__((swift_name("FCUser.Companion")))
 - (id<FunnelConnectKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
 @end
 
+
+/**
+ * @note annotations
+ *   kotlinx.serialization.Serializable
+*/
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("PassQuery")))
+@interface FunnelConnectPassQuery : FunnelConnectBase
+- (instancetype)initWithKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("init(key:value:)"))) __attribute__((objc_designated_initializer));
+@property (class, readonly, getter=companion) FunnelConnectPassQueryCompanion *companion __attribute__((swift_name("companion")));
+- (FunnelConnectPassQuery *)doCopyKey:(NSString *)key value:(NSString *)value __attribute__((swift_name("doCopy(key:value:)")));
+- (BOOL)isEqual:(id _Nullable)other __attribute__((swift_name("isEqual(_:)")));
+- (NSUInteger)hash __attribute__((swift_name("hash()")));
+- (NSString *)description __attribute__((swift_name("description()")));
+@property (readonly) NSString *key __attribute__((swift_name("key")));
+@property (readonly) NSString *value __attribute__((swift_name("value")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("PassQuery.Companion")))
+@interface FunnelConnectPassQueryCompanion : FunnelConnectBase
++ (instancetype)alloc __attribute__((unavailable));
++ (instancetype)allocWithZone:(struct _NSZone *)zone __attribute__((unavailable));
++ (instancetype)companion __attribute__((swift_name("init()")));
+@property (class, readonly, getter=shared) FunnelConnectPassQueryCompanion *shared __attribute__((swift_name("shared")));
+- (id<FunnelConnectKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
 __attribute__((swift_name("KotlinThrowable")))
 @interface FunnelConnectKotlinThrowable : FunnelConnectBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
@@ -337,33 +365,33 @@ __attribute__((swift_name("FunnelConnectSDK")))
 /**
  * @note This method converts all Kotlin exceptions to errors.
 */
-- (BOOL)startServiceAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService()")));
+- (BOOL)startServicePassQuery:(FunnelConnectPassQuery * _Nullable)passQuery error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(passQuery:)")));
 
 /**
  * @note This method converts all Kotlin exceptions to errors.
 */
-- (BOOL)startServiceFcUser:(FunnelConnectFCUser *)fcUser error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:)")));
+- (BOOL)startServiceFcUser:(FunnelConnectFCUser *)fcUser passQuery:(FunnelConnectPassQuery * _Nullable)passQuery error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:passQuery:)")));
 
 /**
  * @note This method converts all Kotlin exceptions to errors.
 */
-- (BOOL)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUsers:)")));
-- (void)startServiceDataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(dataCallback:errorCallback:)")));
+- (BOOL)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers passQuery:(FunnelConnectPassQuery * _Nullable)passQuery error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUsers:passQuery:)")));
+- (void)startServicePassQuery:(FunnelConnectPassQuery * _Nullable)passQuery dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(passQuery:dataCallback:errorCallback:)")));
 
 /**
  * @note This method converts all Kotlin exceptions to errors.
 */
-- (BOOL)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(notificationsName:notificationsVersion:)")));
-- (void)startServiceFcUser:(FunnelConnectFCUser *)fcUser dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:dataCallback:errorCallback:)")));
+- (BOOL)startServicePassQuery:(FunnelConnectPassQuery * _Nullable)passQuery notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(passQuery:notificationsName:notificationsVersion:)")));
+- (void)startServiceFcUser:(FunnelConnectFCUser *)fcUser passQuery:(FunnelConnectPassQuery * _Nullable)passQuery dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:passQuery:dataCallback:errorCallback:)")));
 
 /**
  * @note This method converts all Kotlin exceptions to errors.
 */
-- (BOOL)startServiceFcUser:(FunnelConnectFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:)")));
-- (void)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:dataCallback:errorCallback:)")));
-- (void)startServiceNotificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
-- (void)startServiceFcUser:(FunnelConnectFCUser *)fcUser notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
-- (void)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (BOOL)startServiceFcUser:(FunnelConnectFCUser *)fcUser passQuery:(FunnelConnectPassQuery * _Nullable)passQuery notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion error:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("startService(fcUser:passQuery:notificationsName:notificationsVersion:)")));
+- (void)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers passQuery:(FunnelConnectPassQuery * _Nullable)passQuery dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:passQuery:dataCallback:errorCallback:)")));
+- (void)startServicePassQuery:(FunnelConnectPassQuery * _Nullable)passQuery notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(passQuery:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)startServiceFcUser:(FunnelConnectFCUser *)fcUser passQuery:(FunnelConnectPassQuery * _Nullable)passQuery notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUser:passQuery:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
+- (void)startServiceFcUsers:(NSArray<FunnelConnectFCUser *> *)fcUsers passQuery:(FunnelConnectPassQuery * _Nullable)passQuery notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("startService(fcUsers:passQuery:notificationsName:notificationsVersion:dataCallback:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FunnelConnectPermissions *)permissions errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FunnelConnectPermissions *)permissions dataCallback:(void (^)(NSString *))dataCallback errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:dataCallback:errorCallback:)")));
 - (void)updatePermissionsPermissions:(FunnelConnectPermissions *)permissions notificationsName:(NSString *)notificationsName notificationsVersion:(int32_t)notificationsVersion errorCallback:(void (^)(NSError *))errorCallback __attribute__((swift_name("updatePermissions(permissions:notificationsName:notificationsVersion:errorCallback:)")));
