@@ -336,7 +336,7 @@ __attribute__((swift_name("FunnelConnectSDK")))
 - (NSArray<FunnelConnectFCUser *> * _Nullable)getUsersAndReturnError:(NSError * _Nullable * _Nullable)error __attribute__((swift_name("getUsers()")));
 - (void)initializeSdkToken:(NSString *)sdkToken __attribute__((swift_name("initialize(sdkToken:)")));
 - (void)initializeSdkToken:(NSString *)sdkToken options:(FunnelConnectFCOptions *)options __attribute__((swift_name("initialize(sdkToken:options:)")));
-- (BOOL)isInitialize __attribute__((swift_name("isInitialize()")));
+- (BOOL)isInitialized __attribute__((swift_name("isInitialized()")));
 
 /**
  * @note This method converts all Kotlin exceptions to errors.
