@@ -6,7 +6,7 @@
 #import <Foundation/NSString.h>
 #import <Foundation/NSValue.h>
 
-@class FunnelConnectBasePermissions, FunnelConnectCoreBaseError, FunnelConnectFCOptions, FunnelConnectFCUser, FunnelConnectFCUserCompanion, FunnelConnectFunnelConnectSDK, FunnelConnectIdentificationNotEnabledException, FunnelConnectInfoNotEnabledException, FunnelConnectKotlinArray<T>, FunnelConnectKotlinNothing, FunnelConnectKotlinThrowable, FunnelConnectKotlinx_serialization_coreSerialKind, FunnelConnectKotlinx_serialization_coreSerializersModule, FunnelConnectPassQuery, FunnelConnectPassQueryCompanion, FunnelConnectPermissions, FunnelConnectTrackingNotEnabledException, NSDictionary, NSError;
+@class FunnelConnectBasePermissions, FunnelConnectCoreBaseError, FunnelConnectCoreEnvironmentVariables, FunnelConnectFCOptions, FunnelConnectFCUser, FunnelConnectFCUserCompanion, FunnelConnectFunnelConnectSDK, FunnelConnectIdentificationNotEnabledException, FunnelConnectInfoNotEnabledException, FunnelConnectKotlinArray<T>, FunnelConnectKotlinNothing, FunnelConnectKotlinThrowable, FunnelConnectKotlinx_serialization_coreSerialKind, FunnelConnectKotlinx_serialization_coreSerializersModule, FunnelConnectPassQuery, FunnelConnectPassQueryCompanion, FunnelConnectPermissions, FunnelConnectTrackingNotEnabledException, NSDictionary, NSError;
 
 @protocol FunnelConnectCoreSDKMainClassUtils, FunnelConnectKotlinAnnotation, FunnelConnectKotlinIterator, FunnelConnectKotlinKAnnotatedElement, FunnelConnectKotlinKClass, FunnelConnectKotlinKClassifier, FunnelConnectKotlinKDeclarationContainer, FunnelConnectKotlinx_serialization_coreCompositeDecoder, FunnelConnectKotlinx_serialization_coreCompositeEncoder, FunnelConnectKotlinx_serialization_coreDecoder, FunnelConnectKotlinx_serialization_coreDeserializationStrategy, FunnelConnectKotlinx_serialization_coreEncoder, FunnelConnectKotlinx_serialization_coreKSerializer, FunnelConnectKotlinx_serialization_coreSerialDescriptor, FunnelConnectKotlinx_serialization_coreSerializationStrategy, FunnelConnectKotlinx_serialization_coreSerializersModuleCollector;
 
@@ -179,6 +179,24 @@ __attribute__((swift_name("FCUser.Companion")))
 + (instancetype)companion __attribute__((swift_name("init()")));
 @property (class, readonly, getter=shared) FunnelConnectFCUserCompanion *shared __attribute__((swift_name("shared")));
 - (id<FunnelConnectKotlinx_serialization_coreKSerializer>)serializer __attribute__((swift_name("serializer()")));
+@end
+
+__attribute__((swift_name("CoreEnvironmentVariables")))
+@interface FunnelConnectCoreEnvironmentVariables : FunnelConnectBase
+- (instancetype)initWithSdkName:(NSString *)sdkName sdkVersion:(NSString *)sdkVersion gitCommitHash:(NSString *)gitCommitHash companyName:(NSString *)companyName keysToRedactWhenLogging:(NSSet<NSString *> *)keysToRedactWhenLogging __attribute__((swift_name("init(sdkName:sdkVersion:gitCommitHash:companyName:keysToRedactWhenLogging:)"))) __attribute__((objc_designated_initializer));
+@property (readonly) NSString *companyName __attribute__((swift_name("companyName")));
+@property (readonly) NSString *gitCommitHash __attribute__((swift_name("gitCommitHash")));
+@property (readonly) NSSet<NSString *> *keysToRedactWhenLogging __attribute__((swift_name("keysToRedactWhenLogging")));
+@property (readonly) NSString *sdkName __attribute__((swift_name("sdkName")));
+@property (readonly) NSString *sdkVersion __attribute__((swift_name("sdkVersion")));
+@end
+
+__attribute__((objc_subclassing_restricted))
+__attribute__((swift_name("FunnelConnectEnvironmentVariables")))
+@interface FunnelConnectFunnelConnectEnvironmentVariables : FunnelConnectCoreEnvironmentVariables
+- (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
++ (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (instancetype)initWithSdkName:(NSString *)sdkName sdkVersion:(NSString *)sdkVersion gitCommitHash:(NSString *)gitCommitHash companyName:(NSString *)companyName keysToRedactWhenLogging:(NSSet<NSString *> *)keysToRedactWhenLogging __attribute__((swift_name("init(sdkName:sdkVersion:gitCommitHash:companyName:keysToRedactWhenLogging:)"))) __attribute__((objc_designated_initializer)) __attribute__((unavailable));
 @end
 
 
