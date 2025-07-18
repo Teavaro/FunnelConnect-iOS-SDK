@@ -23,7 +23,7 @@
 FunnelConnect SDK reduces the time and the overhead required to integrate with FunnelConnect APIs and provides direct access to FunnelConnect services.
 
 ## Installation and integration:
-For installation and integration please check the SDK [documentation](https://docs.teavaro.com/documentation/).
+For installation and integration please check the SDK [documentation](https://docs.teavaro.com/teavaro/ios-sdk).
 
 
 ## Support and bug reporting:
